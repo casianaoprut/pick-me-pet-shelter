@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div *ngIf="user === null">
+      <button class="btn btn-primary" (click)="onGoogleSignIn()">Google sign in</button>
+    </div>
+    <div *ngIf="user !== null">
+      <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+      <div *ngIf="user.roles.admin">
+        <h1>Admin</h1>
+      </div>
+      <div *ngIf="user.roles.customer">
+        <h1>Customer</h1>
+      </div>
+    </div>
+  </div>
+</div>
