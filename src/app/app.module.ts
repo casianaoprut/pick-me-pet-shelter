@@ -11,20 +11,26 @@ import { AppComponent } from './app.component';
 import { GoogleSignInComponent } from './auth/google-sign-in/google-sign-in.component';
 
 import {environment} from '../environments/environment';
+import { EmailSignUpComponent } from './auth/email-sign-up/email-sign-up.component';
+import {FormsModule} from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GoogleSignInComponent
+    GoogleSignInComponent,
+    EmailSignUpComponent,
+    AuthComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AngularFireStorageModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

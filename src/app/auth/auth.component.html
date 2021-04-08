@@ -1,0 +1,17 @@
+<div class="row" >
+  <div class="col-xs-12 col-md-12 col-md-offset-6">
+    <div *ngIf="isLoginMode">
+      <app-google-sign-in></app-google-sign-in>
+    </div>
+    <div *ngIf="!isLoginMode">
+      <app-email-authentication></app-email-authentication>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-info" (click)="onChangingMode()">
+          {{isLoginMode? 'Do not have an account?' : 'Already have an account?' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

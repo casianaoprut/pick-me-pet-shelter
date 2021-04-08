@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <form #f="ngForm" (ngSubmit)="onSignUp(f)">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">E-Mail: </label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              email>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="password">Password: </label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              ngModel
+              name="password"
+              required
+              minlength="6">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="photoURL">Image URL</label>
+            <input
+              type = "text"
+              id = "photoURL"
+              name= "photoURL"
+              class="form-control"
+              ngModel
+              #photoURL>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="photoURL.value" class="img-responsive" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            style="margin:5px"
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid"> SignUp
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
