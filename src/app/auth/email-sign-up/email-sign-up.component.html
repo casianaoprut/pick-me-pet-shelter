@@ -1,60 +1,65 @@
 <div class="row">
-  <div class="col-xs-12 col-md-4 col-md-offset-4">
+  <div class="col-xs-12 col-md-4 col-md-offset-6">
     <form #f="ngForm" (ngSubmit)="onSignUp(f)">
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="email">E-Mail: </label>
-            <input
-              type="email"
-              id="email"
-              class="form-control"
-              ngModel
-              name="email"
-              required
-              email>
+          <div class="p-field p-grid">
+            <label for="email" class="p-col-fixed" style="width:100px">E-Mail: </label>
+            <div class="p-col-fixed">
+              <input
+                style="width:220px"
+                pInputText
+                type="email"
+                id="email"
+                ngModel
+                name="email"
+                required
+                email>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="password">Password: </label>
-            <input
-              type="password"
-              id="password"
-              class="form-control"
-              ngModel
-              name="password"
-              required
-              minlength="6">
+          <div class="p-field p-grid">
+            <label for="password" class="p-col-fixed" style="width:100px">Password: </label>
+            <div class="p-col-fixed">
+              <p-password
+                [toggleMask]="true"
+                id="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+              ></p-password>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
-            <label for="photoURL">Image URL</label>
-            <input
-              type = "text"
-              id = "photoURL"
-              name= "photoURL"
-              class="form-control"
-              ngModel
-              #photoURL>
+          <div class="p-field p-grid">
+            <label for="displayName" class="p-col-fixed" style="width:100px">Name:</label>
+            <div class="p-col-fixed">
+              <input
+                style="width:220px"
+                pInputText
+                type = "text"
+                id = "displayName"
+                name= "displayName"
+                ngModel
+                required
+                >
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <img [src]="photoURL.value" class="img-responsive" alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
+        <div style="margin-top: 10px; margin-left: 66px">
           <button
-            style="margin:5px"
-            class="btn btn-primary"
+            style="width: 85px"
+            pButton
+            class="p-button-rounded"
             type="submit"
             [disabled]="!f.valid"> SignUp
           </button>
