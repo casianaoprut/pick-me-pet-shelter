@@ -53,4 +53,13 @@ export class AuthService {
 
     return userRef.set(data, {merge : true});
   }
+
+  async emailAndPasswordSignIn(email: string, password: string): Promise<void>{
+    this.afAuth.createUserWithEmailAndPassword(email, password).then( result => {
+        this.updateUserData(result.user).catch((error) => {
+          window.alert(error.message);
+        });
+      }
+    );
+  }
 }
