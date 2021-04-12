@@ -18,13 +18,17 @@ import { AuthComponent } from './auth/auth.component';
 import {PasswordModule} from 'primeng/password';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import { HeaderComponent } from './header/header.component';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoogleSignInComponent,
     EmailSignUpComponent,
-    AuthComponent
+    AuthComponent,
+    HeaderComponent,
+    DropdownDirective
   ],
     imports: [
       BrowserModule,
