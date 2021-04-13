@@ -2,28 +2,33 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a style="cursor: pointer" (click)="onHomePage()" class="navbar-brand">
-        <img class="logo" src="assets/home.webp" alt="logo" width="40" height="40">
+        <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/home.webp?alt=media&token=a0c9cd8a-9a62-46aa-9afe-d93467fc019b" alt="logo" width="40" height="40">
         <p class="name">PickMePetShelter</p>
       </a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#"><p class="petlist">Pet List</p></a></li>
-        <li><a href="#"><p class="volunteer">Volunteer</p></a></li>
-        <li><a href="#"><p class="donate">Donate</p></a></li>
+        <li><a (click)="onPetList()" style="cursor: pointer"><p class="petList">Pet List</p></a></li>
+        <li><a style="cursor: pointer"><p class="volunteer">Volunteer</p></a></li>
+        <li><a style="cursor: pointer"><p class="donate">Donate</p></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a href="#" class="dropdown-toggle" role="button">
-            <img src="assets/user.png" alt="user" width="27" height="27">  Log In
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><p class="manage">Manage Forms</p></a></li>
-            <li><a href="#"><p class="updatelist">Update Pet List</p></a></li>
-            <li><a href="#"><p class="adoption">Adoption</p> </a></li>
-            <li><a href="#"><p class="logout">Log out</p></a></li>
-          </ul>
-        </li>
+        <li><a (click)="onAuth()" style="cursor: pointer"><p class="manage">Login</a></li>
+<!--        <li class="dropdown" appDropdown>-->
+<!--          <a class="dropdown-toggle" role="button">-->
+<!--            <img-->
+<!--              src="https://firebasestorage.googleapis.com/v0/b/pick-me&#45;&#45;pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf"-->
+<!--              alt="user"-->
+<!--              width="27"-->
+<!--              height="27">-->
+<!--            <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a style="cursor: pointer"><p class="manage">Manage Forms</p></a></li>-->
+<!--            <li><a style="cursor: pointer"><p class="updateList">Update Pet List</p></a></li>-->
+<!--            <li><a style="cursor: pointer"><p class="adoption">Adoption</p> </a></li>-->
+<!--            <li><a style="cursor: pointer"><p class="logout">Log out</p></a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
       </ul>
     </div>
   </div>

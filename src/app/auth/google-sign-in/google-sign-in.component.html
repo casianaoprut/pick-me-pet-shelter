@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <div *ngIf="user === null" style="margin-top: 10px;margin-bottom: 5px">
+    <div *ngIf="user === null" style="margin-top: 10px;margin-bottom: 5px; text-align: center">
       <button
         pButton
-        class="p-button-rounded"
+        style="font-size: 13px"
+        class="p-button-rounded p-button-danger"
         (click)="onGoogleSignIn()"
-      >Google sign in</button>
+      >Sign in with Google account</button>
     </div>
   </div>
 </div>
