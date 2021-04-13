@@ -1,0 +1,19 @@
+<div *ngIf="!user">
+  <h1>Nu sunteti logat!</h1>
+</div>
+<div *ngIf="user">
+  <h1>Sunteti logat!</h1>
+  <h1>{{user.displayName}}</h1>
+  <h1 *ngIf="user.roles.customer">Customer</h1>
+  <h1 *ngIf="user.roles.admin">Admin</h1>
+  <h1>{{user.email}}</h1>
+  <img
+    [src]="
+    user.photoURL?
+    user.photoURL :
+    'https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf'"
+    alt="userPhoto"
+    style="height: 100px;"
+  >
+</div>
+

@@ -40,13 +40,13 @@ export class AuthService {
     await this.afAuth.signOut();
   }
 
-  private updateUserData(user: any): Promise<void> {
+  private updateUserData(user: any, displayName?: string): Promise<void> {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     const data = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: displayName ? displayName : user.displayName,
       photoURL: user.photoURL,
       roles: user.roles ? user.roles : {customer: true}
     };
@@ -54,12 +54,20 @@ export class AuthService {
     return userRef.set(data, {merge : true});
   }
 
-  async emailAndPasswordSignIn(email: string, password: string): Promise<void>{
+  async emailAndPasswordSignIn(email: string, password: string, displayName: string): Promise<void>{
     this.afAuth.createUserWithEmailAndPassword(email, password).then( result => {
-        this.updateUserData(result.user).catch((error) => {
+        this.updateUserData(result.user, displayName).catch((error) => {
           window.alert(error.message);
         });
       }
     );
+  }
+
+  async emailLogin(email: string, password: string): Promise<void> {
+    this.afAuth.signInWithEmailAndPassword(email, password).then( userResult => {
+      this.updateUserData(userResult);
+    }).catch( error => {
+      console.log(error.message);
+    });
   }
 }
