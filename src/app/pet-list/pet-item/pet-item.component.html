@@ -1,0 +1,27 @@
+<div style="display:inline-block; max-width: 210px; margin: 5px">
+  <p-card header="{{pet.name}}, {{getAge()}} years">
+    <ng-template pTemplate="header">
+      <img
+        [src]="pet.photoURL"
+        alt="{{ pet.name }}"
+        class="img-responsive"
+        style="max-height: 100px; max-width: 200px;">
+    </ng-template>
+    <div>{{pet.breed }}</div>
+    <div>{{pet.description}}</div>
+    <ng-template pTemplate="footer">
+        <button
+          style="width: 80px"
+          pButton
+          class="p-button-success p-button-rounded"
+          label="Adopt Me!"
+        ></button>
+        <button
+          style="width: 80px ; margin-left: 20px"
+          pButton
+          class="p-button-info p-button-rounded"
+          label="Details"></button>
+    </ng-template>
+  </p-card>
+</div>
+

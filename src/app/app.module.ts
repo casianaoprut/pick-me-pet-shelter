@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
 import {PasswordModule} from 'primeng/password';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import {CardModule} from 'primeng/card';
 
 import {DropdownDirective} from './shared/dropdown.directive';
 import { PetListComponent } from './pet-list/pet-list.component';
@@ -28,7 +28,6 @@ import { PetItemComponent } from './pet-list/pet-item/pet-item.component';
 import { PetDetailsComponent } from './pet-list/pet-details/pet-details.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
-import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -55,8 +54,7 @@ import { MatSliderModule } from '@angular/material/slider';
       PasswordModule,
       InputTextModule,
       ButtonModule,
-      BrowserAnimationsModule,
-      MatSliderModule
+      CardModule
     ],
   providers: [],
   bootstrap: [AppComponent]
