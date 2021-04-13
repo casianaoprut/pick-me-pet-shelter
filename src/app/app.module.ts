@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -14,12 +15,20 @@ import {environment} from '../environments/environment';
 import { EmailSignUpComponent } from './auth/email-sign-up/email-sign-up.component';
 import {FormsModule} from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
+import { HeaderComponent } from './header/header.component';
 
 import {PasswordModule} from 'primeng/password';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import { HeaderComponent } from './header/header.component';
+
 import {DropdownDirective} from './shared/dropdown.directive';
+import { PetListComponent } from './pet-list/pet-list.component';
+import { PetEditComponent } from './pet-list/pet-edit/pet-edit.component';
+import { PetItemComponent } from './pet-list/pet-item/pet-item.component';
+import { PetDetailsComponent } from './pet-list/pet-details/pet-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -28,7 +37,12 @@ import {DropdownDirective} from './shared/dropdown.directive';
     EmailSignUpComponent,
     AuthComponent,
     HeaderComponent,
-    DropdownDirective
+    DropdownDirective,
+    PetListComponent,
+    PetEditComponent,
+    PetItemComponent,
+    PetDetailsComponent,
+    HomePageComponent
   ],
     imports: [
       BrowserModule,
@@ -40,9 +54,12 @@ import {DropdownDirective} from './shared/dropdown.directive';
       FormsModule,
       PasswordModule,
       InputTextModule,
-      ButtonModule
+      ButtonModule,
+      BrowserAnimationsModule,
+      MatSliderModule
     ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
