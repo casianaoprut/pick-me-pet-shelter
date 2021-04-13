@@ -1,27 +1,34 @@
-<div style="display:inline-block; max-width: 210px; margin: 5px">
+<div style="display:inline-block; max-width: 315px; margin: 5px">
   <p-card header="{{pet.name}}, {{getAge()}} years">
     <ng-template pTemplate="header">
       <img
         [src]="pet.photoURL"
         alt="{{ pet.name }}"
         class="img-responsive"
-        style="max-height: 100px; max-width: 200px;">
+        style="max-height: 200px; max-width: 300px;">
     </ng-template>
     <div>{{pet.breed }}</div>
     <div>{{pet.description}}</div>
     <ng-template pTemplate="footer">
         <button
-          style="width: 80px"
+          style="font-size: 13px; width: 80px"
           pButton
           class="p-button-success p-button-rounded"
           label="Adopt Me!"
         ></button>
         <button
-          style="width: 80px ; margin-left: 20px"
+          (click)="onHandleDetails()"
+          style="font-size: 13px; width: 80px;"
           pButton
-          class="p-button-info p-button-rounded"
+          class="p-button-info p-button-rounded pull-right"
           label="Details"></button>
     </ng-template>
+    <app-pet-details
+      *ngIf="showDetails"
+      [age]="getAge()"
+      [pet]="pet"
+      (closeDetails)="onHandleDetails()"
+    ></app-pet-details>
   </p-card>
 </div>
 

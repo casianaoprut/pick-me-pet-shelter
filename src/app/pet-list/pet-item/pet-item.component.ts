@@ -7,6 +7,7 @@ import {Pet} from '../../shared/pet.model';
   styleUrls: ['./pet-item.component.css']
 })
 export class PetItemComponent implements OnInit {
+  showDetails = false;
   @Input()
   pet!: Pet;
   @Input()
@@ -16,7 +17,7 @@ export class PetItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   getAge(): number{
+   public getAge(): number{
     const currentDate = new Date();
     const petBirthDate = this.pet.birthDate.toDate();
     let age = (new Date()).getFullYear() - petBirthDate.getFullYear();
@@ -30,6 +31,10 @@ export class PetItemComponent implements OnInit {
       }
     }
     return age;
+  }
+
+  onHandleDetails(): void{
+    this.showDetails = !this.showDetails;
   }
 
 }
