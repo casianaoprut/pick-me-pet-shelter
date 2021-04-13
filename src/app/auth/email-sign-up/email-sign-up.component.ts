@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-email-sign-up',
@@ -10,6 +11,7 @@ import {NgForm} from '@angular/forms';
 export class EmailSignUpComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -17,6 +19,9 @@ export class EmailSignUpComponent implements OnInit {
   }
 
   onSignUp(form: NgForm): void{
-    this.authService.emailAndPasswordSignIn(form.value.email, form.value.password);
+    this.authService.emailAndPasswordSignIn(form.value.email, form.value.password, form.value.displayName).then(() => {
+        this.router.navigate(['/home-page']);
+      }
+    );
   }
 }

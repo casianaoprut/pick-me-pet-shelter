@@ -13,22 +13,23 @@
         <li><a style="cursor: pointer"><p class="donate">Donate</p></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="onAuth()" style="cursor: pointer"><p class="manage">Login</a></li>
-<!--        <li class="dropdown" appDropdown>-->
-<!--          <a class="dropdown-toggle" role="button">-->
-<!--            <img-->
-<!--              src="https://firebasestorage.googleapis.com/v0/b/pick-me&#45;&#45;pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf"-->
-<!--              alt="user"-->
-<!--              width="27"-->
-<!--              height="27">-->
-<!--            <span class="caret"></span></a>-->
-<!--          <ul class="dropdown-menu">-->
-<!--            <li><a style="cursor: pointer"><p class="manage">Manage Forms</p></a></li>-->
-<!--            <li><a style="cursor: pointer"><p class="updateList">Update Pet List</p></a></li>-->
-<!--            <li><a style="cursor: pointer"><p class="adoption">Adoption</p> </a></li>-->
-<!--            <li><a style="cursor: pointer"><p class="logout">Log out</p></a></li>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <li *ngIf="!user"><a (click)="onAuth()" style="cursor: pointer"><p class="manage">Login</a></li>
+        <li class="dropdown" appDropdown *ngIf="user">
+          <a class="dropdown-toggle" role="button">
+            <img
+              [src]="user.photoURL? user.photoURL : 'https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf'"
+              alt="user"
+              width="27"
+              height="27"
+              class="img-circle">
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer"><p class="manage">Manage Forms</p></a></li>
+            <li><a style="cursor: pointer"><p class="updateList">Update Pet List</p></a></li>
+            <li><a style="cursor: pointer"><p class="adoption">Adoption</p> </a></li>
+            <li><a style="cursor: pointer"><p class="logout" (click)="onLogout()">Log out</p></a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
