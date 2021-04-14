@@ -28,6 +28,7 @@ import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
 
 import {DropdownDirective} from './shared/dropdown.directive';
+import { AdoptionFormComponent } from './forms/adoption-form/adoption-form.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {DropdownDirective} from './shared/dropdown.directive';
     PetItemComponent,
     PetDetailsComponent,
     HomePageComponent,
-    EmailLogInComponent
+    EmailLogInComponent,
+    AdoptionFormComponent
   ],
     imports: [
       BrowserModule,

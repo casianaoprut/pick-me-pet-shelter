@@ -24,9 +24,27 @@
               class="img-circle">
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer"><p class="manage">Manage Forms</p></a></li>
-            <li><a style="cursor: pointer"><p class="updateList">Update Pet List</p></a></li>
-            <li><a style="cursor: pointer"><p class="adoption">Adoption</p> </a></li>
+            <li *ngIf="user.roles.admin">
+              <a style="cursor: pointer">
+                <p class="manage">Manage Forms</p>
+              </a>
+            </li>
+            <li *ngIf="user.roles.customer">
+              <a style="cursor: pointer">
+                <p class="manage">My forms</p>
+              </a>
+            </li>
+            <li *ngIf="user.roles.admin">
+              <a
+                style="cursor: pointer">
+                <p class="updateList">Update Pet List</p>
+              </a>
+            </li>
+            <li *ngIf="user.roles.admin">
+              <a style="cursor: pointer">
+                <p class="adoption">Adoptions List</p>
+              </a>
+            </li>
             <li><a style="cursor: pointer"><p class="logout" (click)="onLogout()">Log out</p></a></li>
           </ul>
         </li>
