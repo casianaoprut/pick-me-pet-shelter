@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
 import {Pet} from '../../shared/pet.model';
 
 @Component({
@@ -10,9 +12,9 @@ export class PetItemComponent implements OnInit {
   showDetails = false;
   @Input()
   pet!: Pet;
-  @Input()
-  index!: number;
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +37,11 @@ export class PetItemComponent implements OnInit {
 
   onHandleDetails(): void{
     this.showDetails = !this.showDetails;
+  }
+
+  onAdoptMe(): void{
+    localStorage.setItem('selectedPet', JSON.stringify(this.pet));
+    this.router.navigate(['forms/adoption']);
   }
 
 }

@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
+
 import {Pet} from '../../shared/pet.model';
 
 @Component({
@@ -16,8 +18,9 @@ export class PetDetailsComponent implements OnInit {
 
   @Output() closeDetails = new EventEmitter<void>();
 
-  constructor() {
-  }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.birthDate =
@@ -32,6 +35,8 @@ export class PetDetailsComponent implements OnInit {
   }
 
   onAdoptMe(): void{
+    localStorage.setItem('selectedPet', JSON.stringify(this.pet));
+    this.router.navigate(['forms/adoption']);
   }
 
 }

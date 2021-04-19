@@ -21,14 +21,12 @@ import { PetItemComponent } from './pet-list/pet-item/pet-item.component';
 import { PetDetailsComponent } from './pet-list/pet-details/pet-details.component';
 import {EmailLogInComponent} from './auth/email-log-in/email-log-in.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
-import {PasswordModule} from 'primeng/password';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {CardModule} from 'primeng/card';
+import { AdoptionFormComponent } from './forms/adoption-form/adoption-form.component';
 
 import {DropdownDirective} from './shared/dropdown.directive';
 import { VolunteerFormComponent } from './forms/volunteer-form/volunteer-form.component';
+import {PrimengModule} from './primeng.module';
+
 
 
 @NgModule({
@@ -45,22 +43,21 @@ import { VolunteerFormComponent } from './forms/volunteer-form/volunteer-form.co
     PetDetailsComponent,
     HomePageComponent,
     EmailLogInComponent,
+    AdoptionFormComponent,
+    EmailLogInComponent,
     VolunteerFormComponent,
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      AngularFireModule.initializeApp(environment.firebase),
-      AngularFirestoreModule,
-      AngularFireAuthModule,
-      AngularFireStorageModule,
-      FormsModule,
-      PasswordModule,
-      InputTextModule,
-      ButtonModule,
-      CardModule,
-      BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    PrimengModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

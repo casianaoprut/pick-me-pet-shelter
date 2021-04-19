@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-12">
     <app-pet-item
-      *ngFor="let petElement of petList; let i = index"
+      *ngFor="let petElement of petList"
       [pet]="petElement"
-      [index]="i">
+    >
     </app-pet-item>
   </div>
 </div>

@@ -5,7 +5,7 @@
         [src]="pet.photoURL"
         alt="{{ pet.name }}"
         class="img-responsive"
-        style="max-height: 200px; max-width: 300px;">
+        style="max-height: 150px; width: auto;">
     </ng-template>
     <div>{{pet.breed }}</div>
     <div>{{pet.description}}</div>
@@ -15,6 +15,7 @@
           pButton
           class="p-button-success p-button-rounded"
           label="Adopt Me!"
+          (click)="onAdoptMe()"
         ></button>
         <button
           (click)="onHandleDetails()"

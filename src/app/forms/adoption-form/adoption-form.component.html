@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-12">
+    <button
+      pButton
+      class="p-button-danger p-button-rounded pull-right"
+      type=button
+      icon="pi pi-times"
+      (click)="onClose()"
+      label=""
+    ></button>
+    <h1 style="text-align: center">Adopt Me form</h1>
+    <div>
+      <div *ngIf="selectedPet" style="text-align: center">
+        <img
+          [src]="selectedPet.photoURL"
+          class="img-rounded"
+          style="max-height: 250px; max-width: 500px;text-align: left!important;"
+          [alt]="selectedPet.name"
+        >
+        <h3>{{selectedPet.name}}, {{ selectedPet.breed }}</h3>
+      </div>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-6">
+            <label for="firstname">Firstname</label>
+            <input
+              ngModel
+              name="firstname"
+              id="firstname"
+              type="text"
+              pInputText
+              required>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <label for="lastname">Lastname</label>
+            <input
+              id="lastname"
+              name="lastname"
+              type="text"
+              pInputText
+              required
+              ngModel>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <label for="address">Address</label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              pInputText
+              ngModel
+              required>
+          </div>
+          <div style="margin-left: 10px">
+            <label>Do you have other pets?</label>
+            <div class="p-formgroup-inline" >
+              <div class="p-field-checkbox">
+                <p-radioButton name="groupname" value="Yes" [(ngModel)]="selectedValue"></p-radioButton>
+                <label >Yes</label>
+              </div>
+              <div class="p-field-checkbox">
+                <p-radioButton name="groupname" value="No" [(ngModel)]="selectedValue"></p-radioButton>
+                <label >No</label>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div style="margin-left: 5px">
+            <label>Add a description to your adoption form</label>
+            <textarea
+              rows="2"
+              cols="200"
+              pInputTextarea
+              [autoResize]="true"
+              ngModel
+              name="description"
+              required></textarea>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 5px">
+          <button
+            [disabled]="!f.valid"
+            style="font-size: 13px; width: 80px"
+            pButton
+            class="p-button-success p-button-rounded"
+            label="Adopt Me!"
+            type="submit"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
