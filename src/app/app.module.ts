@@ -24,6 +24,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AdoptionFormComponent } from './forms/adoption-form/adoption-form.component';
 
 import {DropdownDirective} from './shared/dropdown.directive';
+import { VolunteerFormComponent } from './forms/volunteer-form/volunteer-form.component';
 import {PrimengModule} from './primeng.module';
 
 
@@ -42,7 +43,9 @@ import {PrimengModule} from './primeng.module';
     PetDetailsComponent,
     HomePageComponent,
     EmailLogInComponent,
-    AdoptionFormComponent
+    AdoptionFormComponent,
+    EmailLogInComponent,
+    VolunteerFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,4 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLogout(): void{
     this.authService.logout();
   }
+  onVolunteer(): void{
+    this.router.navigate(['/forms']);
+  }
 }

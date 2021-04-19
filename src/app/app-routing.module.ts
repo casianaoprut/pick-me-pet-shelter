@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AuthComponent} from './auth/auth.component';
 import {PetListComponent} from './pet-list/pet-list.component';
 import {HomePageComponent} from './home-page/home-page.component';
+import {VolunteerFormComponent} from './forms/volunteer-form/volunteer-form.component';
 import {AdoptionFormComponent} from './forms/adoption-form/adoption-form.component';
 import {AuthGuard} from './shared/auth.guard';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'pets', component: PetListComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
+  {path: 'forms', component: VolunteerFormComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
