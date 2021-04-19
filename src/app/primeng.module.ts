@@ -9,8 +9,6 @@ import {RippleModule} from 'primeng/ripple';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -22,7 +20,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DropdownModule,
     RippleModule,
     RadioButtonModule,
-    InputTextareaModule
+    InputTextareaModule,
   ],
   exports: [
     PasswordModule,
@@ -33,7 +31,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CommonModule,
     RippleModule,
     RadioButtonModule,
-    InputTextareaModule
+    InputTextareaModule,
   ]
 })
 export class PrimengModule { }

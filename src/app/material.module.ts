@@ -8,7 +8,11 @@ import { MatSliderModule } from '@angular/material/slider';
   declarations: [],
   imports: [
     MatSliderModule,
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    MatSliderModule,
+    CommonModule,
   ]
 })
 export class MaterialModule { }
