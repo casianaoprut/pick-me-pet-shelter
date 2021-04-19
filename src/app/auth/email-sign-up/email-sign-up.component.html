@@ -1,13 +1,31 @@
 <div class="row">
-  <div style="text-align: center">
-    <form #f="ngForm" (ngSubmit)="onSignUp(f)">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <form #f="ngForm" (ngSubmit)="onSignUp(f)" >
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="p-field p-grid">
+            <label for="displayName" class="p-col-fixed" style="width:100px;">Name:</label>
+            <div class="p-col-fixed">
+              <input
+                style="width:145px"
+                pInputText
+                type = "text"
+                id = "displayName"
+                name= "displayName"
+                ngModel
+                required
+              >
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="p-field p-grid">
             <label
               for="email"
               class="p-col-fixed"
-              style="width:100px; text-align: left">E-Mail: </label>
+              style="width:100px;">E-Mail: </label>
             <div class="p-col-fixed">
               <input
                 style="width: 145px;"
@@ -25,7 +43,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="p-field p-grid">
-            <label for="password" class="p-col-fixed" style="width:100px; text-align: left">Password: </label>
+            <label for="password" class="p-col-fixed" style="width:100px;">Password: </label>
             <div class="p-col-fixed">
               <p-password
                 [toggleMask]="true"
@@ -39,26 +57,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="p-field p-grid">
-            <label for="displayName" class="p-col-fixed" style="width:100px; text-align: left;">Name:</label>
-            <div class="p-col-fixed">
-              <input
-                style="width:145px"
-                pInputText
-                type = "text"
-                id = "displayName"
-                name= "displayName"
-                ngModel
-                required
-                >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div style="margin-top: 10px; margin-bottom: 5px">
+      <div class="row" style="text-align: center">
+        <div style="margin-bottom: 5px">
           <button
             pButton
             class="p-button-rounded"

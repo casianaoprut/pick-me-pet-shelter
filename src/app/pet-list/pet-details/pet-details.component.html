@@ -1,8 +1,16 @@
 <div class="backdrop"></div>
 <div class="details-box">
-  <h5></h5>
+  <button
+    pButton
+    class="p-button-danger p-button-rounded pull-right"
+    type=button
+    icon="pi pi-times"
+    (click)="onClose()"
+    label=""
+  ></button>
+  <hr>
   <div class="details-box-actions ">
-    <div style="display:inline-block;">
+    <div>
       <img
         [src]="pet.photoURL"
         class="img-rounded"
@@ -27,15 +35,6 @@
         (click)="onAdoptMe()"
       >
       </button>
-      <button
-        pButton
-        style="margin-left: 10px;font-size: 13px; height: 32px;width: 80px"
-        class="p-button-danger p-button-rounded"
-        type=button
-        icon="pi pi-times"
-        (click)="onClose()"
-        label="Cancel"
-      ></button>
     </div>
   </div>
 </div>
