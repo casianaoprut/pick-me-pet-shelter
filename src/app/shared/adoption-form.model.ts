@@ -5,4 +5,5 @@ export interface AdoptionForm {
   adoptionDescription: string;
   otherPets: string;
   address: string;
+  userUid: string;
 }

@@ -1,10 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {Subscription} from 'rxjs';
+
+import {FormService} from '../form.service';
+import {AuthService} from '../../auth/auth.service';
 
 import {Pet} from '../../shared/pet.model';
-import {FormService} from '../form.service';
 import {AdoptionForm} from '../../shared/adoption-form.model';
+import {User} from '../../shared/user.model';
 
 @Component({
   selector: 'app-adoption-form',
@@ -13,18 +17,24 @@ import {AdoptionForm} from '../../shared/adoption-form.model';
 })
 export class AdoptionFormComponent implements OnInit {
 
+  user: User | null = null;
+  subscription = new Subscription();
   selectedPet: Pet | null = null;
-  var1 = 'Yes';
-  var2 = 'No';
   selectedValue = '';
 
   constructor(
     private router: Router,
-    private formService: FormService
+    private formService: FormService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.selectedPet = JSON.parse(localStorage.getItem('selectedPet') as string);
+    this.subscription = this.authService.user$.subscribe(user => {
+      if (user !== undefined){
+        this.user = user;
+      }
+    });
   }
 
   onClose(): void{
@@ -33,14 +43,15 @@ export class AdoptionFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    if (form.valid && this.selectedPet?.id !== undefined){
+    if (form.valid && this.selectedPet?.id !== undefined && this.user?.uid !== undefined){
       const adoptionForm: AdoptionForm = {
         petId: this.selectedPet?.id,
         firstname: form.value.firstname,
         lastname: form.value.lastname,
         adoptionDescription: form.value.description,
         otherPets: this.selectedValue,
-        address: form.value.address
+        address: form.value.address,
+        userUid: this.user.uid
       };
       this.formService.submitAdoptionForm(adoptionForm);
       form.reset();
