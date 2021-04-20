@@ -9,5 +9,5 @@ export interface Pet{
   addedDate: Timestamp;
   birthDate: Timestamp;
   gender: string;
-  id: string;
+  id?: string;
 }

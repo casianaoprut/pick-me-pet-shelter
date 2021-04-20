@@ -4,6 +4,7 @@ import {AdoptionForm} from '../../../../shared/adoption-form.model';
 import {Pet} from '../../../../shared/pet.model';
 import {PetService} from '../../../../pet-list/pet.service';
 import {Subscription} from 'rxjs';
+import {FormService} from '../../../form.service';
 
 @Component({
   selector: 'app-adoption-form-item',
@@ -18,7 +19,8 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
   @Input() adoptionForm!: AdoptionForm;
 
   constructor(
-    private petService: PetService
+    private petService: PetService,
+    private formService: FormService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,14 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
 
   onHandleDetails(): void{
     this.showDetails = !this.showDetails;
+  }
+
+  onAccept(): void {
+    this.formService.acceptAdoptionForm(this.adoptionForm);
+  }
+
+  onReject(): void{
+    this.formService.rejectAdoptionForm(this.adoptionForm);
   }
 
 }

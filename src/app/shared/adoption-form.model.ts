@@ -1,4 +1,5 @@
 export interface AdoptionForm {
+  idForm?: string;
   petId: string;
   firstname: string;
   lastname: string;
@@ -6,4 +7,5 @@ export interface AdoptionForm {
   otherPets: string;
   address: string;
   userUid: string;
+  accepted: boolean;
 }
