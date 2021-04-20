@@ -67,7 +67,7 @@ export class AuthService {
     this.afAuth.signInWithEmailAndPassword(email, password).then( userResult => {
       this.updateUserData(userResult);
     }).catch( error => {
-      console.log(error.message);
+      window.alert(error.message);
     });
   }
 }

@@ -8,6 +8,7 @@ import {VolunteerFormComponent} from './forms/volunteer-form/volunteer-form.comp
 import {AdoptionFormComponent} from './forms/adoption-form/adoption-form.component';
 import {AuthGuard} from './shared/auth.guard';
 import {FormListComponent} from './forms/form-list/form-list.component';
+import {AdminGuard} from './shared/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
-  {path: 'manage-forms', component: FormListComponent}
+  {path: 'manage-forms', component: FormListComponent, canActivate: [AuthGuard, AdminGuard]}
 ];
 
 @NgModule({
