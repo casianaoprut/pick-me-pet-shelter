@@ -1,5 +1,5 @@
 <div style="display:inline-block; max-width: 315px; margin: 5px">
-  <p-card header="{{pet.name}}, {{getAge()}} years">
+  <p-card header="{{pet.name}}, {{age}} years">
     <ng-template pTemplate="header">
       <img
         [src]="pet.photoURL"
@@ -26,7 +26,6 @@
     </ng-template>
     <app-pet-details
       *ngIf="showDetails"
-      [age]="getAge()"
       [pet]="pet"
       (closeDetails)="onHandleDetails()"
     ></app-pet-details>

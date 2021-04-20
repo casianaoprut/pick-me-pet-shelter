@@ -1,0 +1,27 @@
+<div *ngIf="showDetails && pet !== null">
+  <app-pet-details [pet]="pet" [adminView]="true" (closeDetails)="onHandleDetails()"></app-pet-details>
+</div>
+<p-card
+  header="{{adoptionForm.firstname}} {{adoptionForm.lastname}}"
+  subheader="Adoption form"
+  styleClass="p-card-shadow">
+  <ng-template pTemplate="header" >
+    <img
+      *ngIf="pet !== null"
+      [src]="pet.photoURL"
+      class="img-rounded"
+      style="max-height: 250px; max-width: 500px;"
+      [alt]="pet.name"
+    >
+  </ng-template>
+  <p> I {{adoptionForm.otherPets === 'Yes' ? 'have' : 'don\'t have'}} other pets.</p>
+  <p> Description: {{adoptionForm.adoptionDescription}}</p>
+  <p> Address: {{adoptionForm.address}}</p>
+  <p-button label="Animal details" styleClass="p-button-link" (click)="onHandleDetails()"></p-button>
+  <ng-template pTemplate="footer">
+    <div style="text-align: center">
+      <p-button label="Accept" icon="pi pi-check" styleClass="p-button-secondary"></p-button>
+      <p-button label="Reject" icon="pi pi-times"  [style]="{'margin-left': '.5em'}"></p-button>
+    </div>
+  </ng-template>
+</p-card>

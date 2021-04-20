@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {Pet} from '../../shared/pet.model';
+import {PetService} from '../pet.service';
 
 @Component({
   selector: 'app-pet-item',
@@ -10,30 +11,18 @@ import {Pet} from '../../shared/pet.model';
 })
 export class PetItemComponent implements OnInit {
   showDetails = false;
+  age = 0;
   @Input()
   pet!: Pet;
   constructor(
     private router: Router,
+    private petService: PetService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    this.age = this.petService.getAge(this.pet);
   }
 
-   public getAge(): number{
-    const currentDate = new Date();
-    const petBirthDate = this.pet.birthDate.toDate();
-    let age = (new Date()).getFullYear() - petBirthDate.getFullYear();
-    if (currentDate.getMonth() < petBirthDate.getMonth()){
-      age--;
-    } else {
-      if ( currentDate.getMonth() === petBirthDate.getMonth() ){
-        if (currentDate.getDay() < petBirthDate.getDay()) {
-          age--;
-        }
-      }
-    }
-    return age;
-  }
 
   onHandleDetails(): void{
     this.showDetails = !this.showDetails;

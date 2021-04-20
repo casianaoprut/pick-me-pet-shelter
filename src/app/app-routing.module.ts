@@ -7,6 +7,7 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {VolunteerFormComponent} from './forms/volunteer-form/volunteer-form.component';
 import {AdoptionFormComponent} from './forms/adoption-form/adoption-form.component';
 import {AuthGuard} from './shared/auth.guard';
+import {FormListComponent} from './forms/form-list/form-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'pets', component: PetListComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
-  {path: 'forms', component: VolunteerFormComponent, canActivate: [AuthGuard]}
+  {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
+  {path: 'manage-forms', component: FormListComponent}
 ];
 
 @NgModule({
