@@ -26,7 +26,7 @@
       </h2>
       <h3>{{pet.description}}</h3>
     </div>
-    <div>
+    <div *ngIf="!adminView">
       <button
         style="font-size: 13px; width: 80px"
         pButton

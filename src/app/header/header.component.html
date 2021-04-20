@@ -25,8 +25,8 @@
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li *ngIf="user.roles.admin">
-              <a style="cursor: pointer">
-                <p class="manage">Manage Forms</p>
+              <a style="cursor: pointer" (click)="onManageForms()">
+                <p class="manage" >Manage Forms</p>
               </a>
             </li>
             <li *ngIf="user.roles.customer">

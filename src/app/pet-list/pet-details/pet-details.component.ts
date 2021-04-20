@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {Pet} from '../../shared/pet.model';
+import {PetService} from '../pet.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -11,8 +12,10 @@ import {Pet} from '../../shared/pet.model';
 export class PetDetailsComponent implements OnInit {
   @Input()
   pet!: Pet;
+  age = 0;
+
   @Input()
-  age!: number;
+  adminView = false;
 
   birthDate = '';
 
@@ -20,6 +23,7 @@ export class PetDetailsComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private petService: PetService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +32,7 @@ export class PetDetailsComponent implements OnInit {
       this.pet.birthDate.toDate().getDate() + '/' +
       (this.pet.birthDate.toDate().getMonth() + 1) + '/' +
       this.pet.birthDate.toDate().getFullYear();
+    this.age = this.petService.getAge(this.pet);
   }
 
   onClose(): void {

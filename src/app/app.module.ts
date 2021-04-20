@@ -22,11 +22,15 @@ import { PetDetailsComponent } from './pet-list/pet-details/pet-details.componen
 import {EmailLogInComponent} from './auth/email-log-in/email-log-in.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdoptionFormComponent } from './forms/adoption-form/adoption-form.component';
+import { AdoptionFormListComponent } from './forms/form-list/adoption-form-list/adoption-form-list.component';
+import { AdoptionFormItemComponent } from './forms/form-list/adoption-form-list/adoption-form-item/adoption-form-item.component';
 
 import {DropdownDirective} from './shared/dropdown.directive';
 import { VolunteerFormComponent } from './forms/volunteer-form/volunteer-form.component';
-import {PrimengModule} from './primeng.module';
+import { FormListComponent } from './forms/form-list/form-list.component';
 
+import {PrimengModule} from './primeng.module';
+import {MaterialModule} from './material.module';
 
 
 @NgModule({
@@ -46,6 +50,9 @@ import {PrimengModule} from './primeng.module';
     AdoptionFormComponent,
     EmailLogInComponent,
     VolunteerFormComponent,
+    FormListComponent,
+    AdoptionFormListComponent,
+    AdoptionFormItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +64,7 @@ import {PrimengModule} from './primeng.module';
     FormsModule,
     BrowserAnimationsModule,
     PrimengModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
