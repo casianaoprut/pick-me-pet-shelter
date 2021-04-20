@@ -10,6 +10,7 @@
     <div>{{pet.breed }}</div>
     <div>{{pet.description}}</div>
     <ng-template pTemplate="footer">
+      <div *ngIf="!editMode">
         <button
           style="font-size: 13px; width: 80px"
           pButton
@@ -22,7 +23,25 @@
           style="font-size: 13px; width: 80px;"
           pButton
           class="p-button-info p-button-rounded pull-right"
-          label="Details"></button>
+          label="Details"
+        ></button>
+      </div>
+      <div *ngIf="editMode">
+        <button
+          style="font-size: 13px; width: 80px"
+          pButton
+          class="p-button-danger p-button-rounded"
+          label="Delete"
+          (click)="onDelete()"
+        ></button>
+        <button
+          style="font-size: 13px; width: 80px;"
+          pButton
+          class="p-button-info p-button-rounded pull-right"
+          label="Update"
+        ></button>
+      </div>
+
     </ng-template>
     <app-pet-details
       *ngIf="showDetails"

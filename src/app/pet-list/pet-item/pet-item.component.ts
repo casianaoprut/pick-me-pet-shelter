@@ -10,6 +10,8 @@ import {PetService} from '../pet.service';
   styleUrls: ['./pet-item.component.css']
 })
 export class PetItemComponent implements OnInit {
+
+  @Input() editMode = false;
   showDetails = false;
   age = 0;
   @Input()
@@ -31,6 +33,10 @@ export class PetItemComponent implements OnInit {
   onAdoptMe(): void{
     localStorage.setItem('selectedPet', JSON.stringify(this.pet));
     this.router.navigate(['forms/adoption']);
+  }
+
+  onDelete(): void{
+    this.petService.deletePet(this.pet);
   }
 
 }

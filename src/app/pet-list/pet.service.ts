@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 
+import {map} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 
 import {Pet} from '../shared/pet.model';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,6 +12,7 @@ import {map} from 'rxjs/operators';
 })
 export class PetService{
 
+  editMode = new Subject<boolean>();
   petsCollection: AngularFirestoreCollection;
   pets: Observable<Pet[]>;
 
@@ -47,6 +48,11 @@ export class PetService{
       }
     }
     return age;
+  }
+
+  deletePet(pet: Pet): void{
+    const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
+    petRef.delete();
   }
 
 }
