@@ -9,6 +9,7 @@ import {AdoptionFormComponent} from './forms/adoption-form/adoption-form.compone
 import {AuthGuard} from './shared/auth.guard';
 import {FormListComponent} from './forms/form-list/form-list.component';
 import {AdminGuard} from './shared/admin.guard';
+import {DonationFormComponent} from './forms/donation-form/donation-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
+  {path: 'forms/donation', component: DonationFormComponent},
   {path: 'manage-forms', component: FormListComponent, canActivate: [AuthGuard, AdminGuard]}
 ];
 

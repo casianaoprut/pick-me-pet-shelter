@@ -31,6 +31,7 @@ import { FormListComponent } from './forms/form-list/form-list.component';
 
 import {PrimengModule} from './primeng.module';
 import {MaterialModule} from './material.module';
+import { DonationFormComponent } from './forms/donation-form/donation-form.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {MaterialModule} from './material.module';
     AdoptionFormComponent,
     EmailLogInComponent,
     VolunteerFormComponent,
+    DonationFormComponent,
     FormListComponent,
     AdoptionFormListComponent,
     AdoptionFormItemComponent,

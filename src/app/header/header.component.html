@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav">
         <li><a (click)="onPetList()" style="cursor: pointer"><p class="petList">Pet List</p></a></li>
         <li><a (click)="onVolunteer()" style="cursor: pointer"><p class="volunteer">Volunteer</p></a></li>
-        <li><a style="cursor: pointer"><p class="donate">Donate</p></a></li>
+        <li><a (click)="onDonation()" style="cursor: pointer"><p class="donate">Donate</p></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!user"><a (click)="onAuth()" style="cursor: pointer"><p class="manage">Login</a></li>
