@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 
 import {Pet} from '../shared/pet.model';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class PetService{
   pets: Observable<Pet[]>;
 
   constructor(
+    private afStorage: AngularFireStorage,
     private afs: AngularFirestore
   ) {
     this.petsCollection = this.afs.collection('pets');
@@ -53,6 +55,15 @@ export class PetService{
   deletePet(pet: Pet): void{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
     petRef.delete();
+  }
+
+  addPet(pet: Pet): void{
+    this.afs.collection('pets').add(pet);
+  }
+
+  editPet(pet: Pet): Promise<void>{
+    const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
+    return petRef.set(pet, {merge: true});
   }
 
 }

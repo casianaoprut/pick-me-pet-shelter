@@ -8,7 +8,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {RippleModule} from 'primeng/ripple';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-
+import {CalendarModule} from 'primeng/calendar';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 @NgModule({
@@ -23,6 +24,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     RippleModule,
     RadioButtonModule,
     InputTextareaModule,
+    CalendarModule,
+    FileUploadModule
   ],
   exports: [
     PasswordModule,
@@ -34,6 +37,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     RippleModule,
     RadioButtonModule,
     InputTextareaModule,
+    CalendarModule,
+    FileUploadModule
   ]
 })
 export class PrimengModule { }

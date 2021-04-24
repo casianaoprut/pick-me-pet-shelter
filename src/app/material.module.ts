@@ -12,13 +12,13 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSliderModule,
     CommonModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   exports: [
     MatSliderModule,
     CommonModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
   ]
 })
 export class MaterialModule { }

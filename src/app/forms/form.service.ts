@@ -40,13 +40,7 @@ export class FormService {
   acceptAdoptionForm(form: AdoptionForm): Promise<void>{
     const formRef: AngularFirestoreDocument<AdoptionForm> = this.afs.doc(`adoption-forms/${form.idForm}`);
     const acceptedForm: AdoptionForm = {
-      petId: form.petId,
-      firstname: form.firstname,
-      lastname: form.lastname,
-      adoptionDescription: form.adoptionDescription,
-      otherPets: form.otherPets,
-      address: form.address,
-      userUid: form.userUid,
+      ...form,
       accepted: true,
     };
     return formRef.set(acceptedForm, {merge: true});

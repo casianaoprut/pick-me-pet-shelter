@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
 
 import {PetService} from './pet.service';
 import {AuthService} from '../auth/auth.service';
@@ -20,11 +19,11 @@ export class PetListComponent implements OnInit, OnDestroy {
   petList: Pet[] = [];
   petSubscription = new Subscription();
   userSubscription = new Subscription();
+  showAddPet = false;
 
   constructor(
     private petService: PetService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +47,8 @@ export class PetListComponent implements OnInit, OnDestroy {
     this.editMode = !this.editMode;
   }
 
-  onAddPet(): void{
+  onHandleAddPet(): void{
+    this.showAddPet = !this.showAddPet;
   }
 
 
