@@ -13,9 +13,11 @@ export class PetItemComponent implements OnInit {
 
   @Input() editMode = false;
   showDetails = false;
+  showUpdateMode = false;
   age = 0;
   @Input()
   pet!: Pet;
+
   constructor(
     private router: Router,
     private petService: PetService
@@ -24,7 +26,6 @@ export class PetItemComponent implements OnInit {
   ngOnInit(): void{
     this.age = this.petService.getAge(this.pet);
   }
-
 
   onHandleDetails(): void{
     this.showDetails = !this.showDetails;
@@ -37,6 +38,10 @@ export class PetItemComponent implements OnInit {
 
   onDelete(): void{
     this.petService.deletePet(this.pet);
+  }
+
+  onHandleUpdateMode(): void{
+    this.showUpdateMode = !this.showUpdateMode;
   }
 
 }

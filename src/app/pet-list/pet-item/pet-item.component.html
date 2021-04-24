@@ -1,3 +1,15 @@
+<div *ngIf="showUpdateMode">
+  <app-pet-edit
+    [pet]="pet"
+  (closeUpdate)="onHandleUpdateMode()"
+  ></app-pet-edit>
+</div>
+<div *ngIf="showDetails">
+  <app-pet-details
+    [pet]="pet"
+    (closeDetails)="onHandleDetails()"
+  ></app-pet-details>
+</div>
 <div style="display:inline-block; max-width: 315px; margin: 5px">
   <p-card header="{{pet.name}}, {{age}} years">
     <ng-template pTemplate="header">
@@ -31,23 +43,21 @@
           style="font-size: 13px; width: 80px"
           pButton
           class="p-button-danger p-button-rounded"
+          icon="pi pi-trash"
           label="Delete"
           (click)="onDelete()"
         ></button>
         <button
           style="font-size: 13px; width: 80px;"
           pButton
+          icon="pi pi-pencil"
           class="p-button-info p-button-rounded pull-right"
-          label="Update"
+          label="Edit"
+          (click)="onHandleUpdateMode()"
         ></button>
       </div>
 
     </ng-template>
-    <app-pet-details
-      *ngIf="showDetails"
-      [pet]="pet"
-      (closeDetails)="onHandleDetails()"
-    ></app-pet-details>
   </p-card>
 </div>
 
