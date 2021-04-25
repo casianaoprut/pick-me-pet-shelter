@@ -21,7 +21,9 @@ export class PetService{
     private afStorage: AngularFireStorage,
     private afs: AngularFirestore
   ) {
-    this.petsCollection = this.afs.collection('pets');
+    this.petsCollection = this.afs.collection('pets', ref => {
+      return ref.where('adopted', '==', false);
+    });
     this.pets = this.petsCollection.snapshotChanges().pipe( map( changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Pet;
@@ -64,6 +66,15 @@ export class PetService{
   editPet(pet: Pet): Promise<void>{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
     return petRef.set(pet, {merge: true});
+  }
+
+  adoptPet(pet: Pet): Promise<void>{
+    const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
+    const adoptedPet = {
+      ...pet,
+      adopted: true
+    };
+    return petRef.set(adoptedPet, {merge : true});
   }
 
 }
