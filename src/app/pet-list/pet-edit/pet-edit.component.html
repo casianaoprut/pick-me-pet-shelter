@@ -1,5 +1,5 @@
 <div class="backdrop"></div>
-<div class="details-box">
+<div class="edit-box">
   <div>
     <button
       pButton
@@ -11,11 +11,11 @@
     ></button>
   </div>
   <hr>
-  <div class="details-box-actions ">
+  <div >
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <div *ngIf="photoUrl !== '' && !showUploader" style="text-align: center; margin-bottom: 10px;">
+      <div *ngIf="photoURL !== '' && !showUploader" style="text-align: center; margin-bottom: 10px;">
         <img
-          [src]="photoUrl"
+          [src]="photoURL"
           class="img-rounded"
           style="max-width: 100%;max-height: 250px; cursor: pointer"
           [alt]="pet.name"

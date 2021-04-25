@@ -57,8 +57,8 @@ export class PetService{
     petRef.delete();
   }
 
-  addPet(pet: Pet): void{
-    this.afs.collection('pets').add(pet);
+  addPet(pet: Pet): Promise<any>{
+    return this.afs.collection('pets').add(pet);
   }
 
   editPet(pet: Pet): Promise<void>{

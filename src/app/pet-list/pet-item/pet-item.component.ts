@@ -13,7 +13,7 @@ export class PetItemComponent implements OnInit {
 
   @Input() editMode = false;
   showDetails = false;
-  showUpdateMode = false;
+  showEditPetMode = false;
   age = 0;
   @Input()
   pet!: Pet;
@@ -40,8 +40,8 @@ export class PetItemComponent implements OnInit {
     this.petService.deletePet(this.pet);
   }
 
-  onHandleUpdateMode(): void{
-    this.showUpdateMode = !this.showUpdateMode;
+  onHandleEditPetMode(): void{
+    this.showEditPetMode = !this.showEditPetMode;
   }
 
 }

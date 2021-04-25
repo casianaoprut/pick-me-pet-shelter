@@ -1,26 +1,28 @@
-<div *ngIf="showUpdateMode">
-  <app-pet-edit
-    [pet]="pet"
-  (closeUpdate)="onHandleUpdateMode()"
-  ></app-pet-edit>
-</div>
-<div *ngIf="showDetails">
+<div *ngIf="showDetails" style="display: inline-block">
   <app-pet-details
     [pet]="pet"
     (closeDetails)="onHandleDetails()"
   ></app-pet-details>
 </div>
-<div style="display:inline-block; max-width: 315px; margin: 5px">
+<div *ngIf="showEditPetMode" style="display: inline-block">
+  <app-pet-edit
+    [pet]="pet"
+    (closePetEdit)="onHandleEditPetMode()"
+  ></app-pet-edit>
+</div>
+<div style="display:inline-block; width: 300px; margin: 5px;">
   <p-card header="{{pet.name}}, {{age}} years">
     <ng-template pTemplate="header">
       <img
         [src]="pet.photoURL"
         alt="{{ pet.name }}"
-        class="img-responsive"
+        class="img-responsive center-block"
         style="max-height: 150px; width: auto;">
     </ng-template>
-    <div>{{pet.breed }}</div>
-    <div>{{pet.description}}</div>
+    <h5>{{pet.breed }}</h5>
+    <h5 *ngIf="pet.description !== undefined">
+      {{pet.description.length > 50 ? pet.description.slice(0,50)+'...' : pet.description}}
+    </h5>
     <ng-template pTemplate="footer">
       <div *ngIf="!editMode">
         <button
@@ -53,7 +55,7 @@
           icon="pi pi-pencil"
           class="p-button-info p-button-rounded pull-right"
           label="Edit"
-          (click)="onHandleUpdateMode()"
+          (click)="onHandleEditPetMode()"
         ></button>
       </div>
 

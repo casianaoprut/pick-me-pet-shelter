@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
 })
 export class PetEditComponent implements OnInit {
 
-  @Output() closeUpdate = new EventEmitter<void>();
+  @Output() closePetEdit = new EventEmitter<void>();
   @Input() pet: Pet = {
     name: '',
     breed: '',
@@ -30,7 +30,7 @@ export class PetEditComponent implements OnInit {
   yearRange = new Date().getFullYear();
   genders = ['male', 'female'];
   showUploader = false;
-  photoUrl = '';
+  photoURL = '';
   photoPath = '';
 
   constructor(
@@ -42,7 +42,7 @@ export class PetEditComponent implements OnInit {
   ngOnInit(): void {
     if (this.pet.name !== ''){
       this.petBirthDate = this.pet.birthDate.toDate();
-      this.photoUrl = this.pet.photoURL;
+      this.photoURL = this.pet.photoURL;
     }
     if ( this.pet.photoURL === ''){
       this.showUploader = true;
@@ -53,7 +53,7 @@ export class PetEditComponent implements OnInit {
     if (this.photoPath !== ''){
       this.storage.ref(this.photoPath).delete();
     }
-    this.closeUpdate.emit();
+    this.closePetEdit.emit();
   }
 
   onHandleUploader(): void{
@@ -63,9 +63,6 @@ export class PetEditComponent implements OnInit {
 
   async onUpload(event: any): Promise<void> {
     const file = event.files[0] as File;
-    if (this.photoPath !== ''){
-      this.storage.ref(this.photoPath).delete();
-    }
     const path = `pets/${file.name}_${Date.now()}`;
     this.storage.upload(path, file)
       .snapshotChanges()
@@ -74,7 +71,7 @@ export class PetEditComponent implements OnInit {
             this.storage.ref(path)
               .getDownloadURL()
               .subscribe(rez => {
-                this.photoUrl = rez;
+                this.photoURL = rez;
                 this.photoPath = path;
                 this.onHandleUploader();
               });
@@ -88,21 +85,28 @@ export class PetEditComponent implements OnInit {
     if (this.pet.photoURL !== ''){
       this.pet = {
         ...this.pet,
-        photoURL: this.photoUrl,
+        photoURL: this.photoURL !== '' ? this.photoURL : this.pet.photoURL,
         birthDate: Timestamp.fromDate(birthDate)
       };
-      this.petService.editPet(this.pet);
+      this.petService.editPet(this.pet).then(() => {
+        this.photoURL = '';
+        this.photoPath = '';
+        this.onClose();
+      });
     } else {
       this.pet = {
         ...this.pet,
-        photoURL: this.photoUrl,
+        photoURL: this.photoURL,
         addedDate: Timestamp.now(),
         birthDate: Timestamp.fromDate(birthDate)
       };
-      this.petService.addPet(this.pet);
+      this.petService.addPet(this.pet).then(() => {
+        this.photoURL = '';
+        this.photoPath = '';
+        this.onClose();
+      });
     }
     form.reset();
-    this.onClose();
   }
 
 }
