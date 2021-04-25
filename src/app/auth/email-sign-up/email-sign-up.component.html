@@ -57,6 +57,25 @@
           </div>
         </div>
       </div>
+      <div style="margin: 15px" *ngIf="!showUploader">
+        <h5 style="text-align: center">(Optional) Click on the photo to select a profile picture</h5>
+        <img
+          [src]="photoURL"
+          class="img-responsive center-block"
+          style="height: 200px;width: auto; cursor: pointer"
+          alt="user"
+          (click)="onHandleUploader()">
+      </div>
+      <div style="margin: 15px" *ngIf="showUploader">
+        <p-fileUpload
+          [auto]="true"
+          accept="image/*"
+          [maxFileSize]="1000000"
+          [customUpload]="true"
+          (uploadHandler)="onUpload($event)"
+        >
+        </p-fileUpload>
+      </div>
       <div class="row" style="text-align: center">
         <div style="margin-bottom: 5px">
           <button
