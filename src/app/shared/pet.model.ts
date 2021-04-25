@@ -10,4 +10,5 @@ export interface Pet{
   birthDate: Timestamp;
   gender: string;
   id?: string;
+  photoPath?: string;
 }
