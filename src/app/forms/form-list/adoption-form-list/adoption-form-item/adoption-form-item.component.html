@@ -14,22 +14,23 @@
       [alt]="pet.name"
     >
   </ng-template>
-  <p> I {{adoptionForm.otherPets === 'Yes' ? 'have' : 'don\'t have'}} other pets.</p>
-  <p> Description: {{adoptionForm.adoptionDescription}}</p>
-  <p> Address: {{adoptionForm.address}}</p>
-  <p-button label="Animal details" styleClass="p-button-link" (click)="onHandleDetails()"></p-button>
+  <h5> I {{adoptionForm.otherPets === 'Yes' ? 'have' : 'don\'t have'}} other pets.</h5>
+  <h5> Description: {{adoptionForm.adoptionDescription}}</h5>
+  <h5> Address: {{adoptionForm.address}}</h5>
+  <p-button [style]="{fontSize: '13px'}" label="Animal details" styleClass="p-button-link" (click)="onHandleDetails()"></p-button>
   <ng-template pTemplate="footer">
     <div style="text-align: center">
       <p-button
         label="Accept"
         icon="pi pi-check"
         styleClass="p-button-secondary"
+        [style]="{fontSize: '13px'}"
         (click)="onAccept()"
       ></p-button>
       <p-button
         label="Reject"
         icon="pi pi-times"
-        [style]="{'margin-left': '.5em'}"
+        [style]="{marginLeft: '.5em', fontSize: '13px'}"
         (click)="onReject()"
       ></p-button>
     </div>

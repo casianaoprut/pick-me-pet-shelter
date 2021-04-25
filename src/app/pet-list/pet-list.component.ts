@@ -1,7 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Pet} from '../shared/pet.model';
-import {PetService} from './pet.service';
 import {Subscription} from 'rxjs';
+
+import {PetService} from './pet.service';
+import {AuthService} from '../auth/auth.service';
+
+import {Pet} from '../shared/pet.model';
+import {User} from '../shared/user.model';
 
 @Component({
   selector: 'app-pet-list',
@@ -9,22 +13,42 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./pet-list.component.css']
 })
 export class PetListComponent implements OnInit, OnDestroy {
+
+  user: User | null = null;
+  editMode = false;
   petList: Pet[] = [];
-  subscription = new Subscription();
+  petSubscription = new Subscription();
+  userSubscription = new Subscription();
+  showAddPet = false;
 
   constructor(
-    private petService: PetService
+    private petService: PetService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.petService.pets.subscribe( pets => {
+    this.petSubscription = this.petService.pets.subscribe( pets => {
       this.petList = pets;
     });
-    // this.petList = this.petService.petList;
+    this.userSubscription = this.authService.user$.subscribe(user => {
+      if (user){
+        this.user = user;
+        }
+      }
+    );
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.petSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
+  }
+
+  onHandleEditMode(): void{
+    this.editMode = !this.editMode;
+  }
+
+  onHandleAddPet(): void{
+    this.showAddPet = !this.showAddPet;
   }
 
 

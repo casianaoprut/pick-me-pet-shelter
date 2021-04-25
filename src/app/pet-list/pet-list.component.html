@@ -1,8 +1,37 @@
+<div *ngIf="showAddPet">
+  <app-pet-edit
+    (closePetEdit)="onHandleAddPet()"
+  ></app-pet-edit>
+</div>
 <div class="row">
   <div class="col-xs-12">
+    <div *ngIf="user && user.roles.admin">
+      <button
+        *ngIf="editMode"
+        pButton
+        pRipple
+        icon="pi pi-plus"
+        type="button"
+        label="New Pet"
+        style="font-size: 13px; width: 80px; margin-right: 5px"
+        class="p-button-rounded p-button-info"
+        (click)="onHandleAddPet()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="{{editMode? 'Cancel' : 'Edit Mode'}}"
+        style="font-size: 13px; width: 80px"
+        class="p-button-rounded p-button-danger"
+        (click)="onHandleEditMode()"
+      ></button>
+      <hr>
+    </div>
     <app-pet-item
       *ngFor="let petElement of petList"
       [pet]="petElement"
+      [editMode]="editMode"
     >
     </app-pet-item>
   </div>
