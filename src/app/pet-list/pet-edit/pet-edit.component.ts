@@ -62,6 +62,9 @@ export class PetEditComponent implements OnInit {
 
 
   async onUpload(event: any): Promise<void> {
+    if (this.photoPath !== ''){
+      this.storage.ref(this.photoPath).delete();
+    }
     const file = event.files[0] as File;
     const path = `pets/${file.name}_${Date.now()}`;
     this.storage.upload(path, file)
@@ -83,8 +86,12 @@ export class PetEditComponent implements OnInit {
   onSubmit(form: NgForm): void{
     const birthDate = this.petBirthDate !== null ? this.petBirthDate : new Date();
     if (this.pet.photoURL !== ''){
+      if (this.pet.photoPath) {
+        this.storage.ref(this.pet.photoPath).delete();
+      }
       this.pet = {
         ...this.pet,
+        photoPath: this.photoPath,
         photoURL: this.photoURL !== '' ? this.photoURL : this.pet.photoURL,
         birthDate: Timestamp.fromDate(birthDate)
       };
@@ -97,6 +104,7 @@ export class PetEditComponent implements OnInit {
       this.pet = {
         ...this.pet,
         photoURL: this.photoURL,
+        photoPath: this.photoPath,
         addedDate: Timestamp.now(),
         birthDate: Timestamp.fromDate(birthDate)
       };
