@@ -10,7 +10,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
-
+import {PanelModule} from 'primeng/panel';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
-    FileUploadModule
+    FileUploadModule,
+    PanelModule,
+    TagModule
   ],
   exports: [
     PasswordModule,
@@ -38,7 +41,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
-    FileUploadModule
+    FileUploadModule,
+    PanelModule,
+    TagModule
   ]
 })
 export class PrimengModule { }
