@@ -18,7 +18,7 @@ export class FormService {
     private afs: AngularFirestore
   ) {
     this.pendingAdoptionFormsCollection = this.afs.collection('adoption-forms', ref => {
-      return ref.where('accepted', '==', false);
+      return ref.where('accepted', '==', false).where('rejected', '==', false);
     });
     this.adoptionForms = this.pendingAdoptionFormsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
@@ -57,7 +57,7 @@ export class FormService {
 
   getUserAdoptionForms(userUid: string): Observable<AdoptionForm[]> {
     const userAdoptionForms: AngularFirestoreCollection = this.afs.collection('adoption-forms', ref => {
-      return ref.where('userUid', '==', userUid);
+      return ref.where('userUid', '==', userUid).where('userReview', '==', true);
     });
     return userAdoptionForms.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
@@ -66,6 +66,19 @@ export class FormService {
         return data;
       });
     }));
+  }
+
+  clearUserAdoptionForm(form: AdoptionForm): Promise<void>{
+    const formRef: AngularFirestoreDocument<AdoptionForm> = this.afs.doc(`adoption-forms/${form.idForm}`);
+    if (form.accepted){
+      const acceptedForm: AdoptionForm = {
+        ...form,
+        userReview: false
+      };
+      return formRef.set(acceptedForm, {merge : true});
+    } else {
+      return formRef.delete();
+    }
   }
 
 }

@@ -9,4 +9,5 @@ export interface AdoptionForm {
   userUid: string;
   accepted: boolean;
   rejected: boolean;
+  userReview: boolean;
 }

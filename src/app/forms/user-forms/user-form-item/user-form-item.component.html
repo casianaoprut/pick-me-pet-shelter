@@ -1,0 +1,52 @@
+<div *ngIf="adoptedPet" style="margin-top: 10px">
+  <p-panel styleClass="p-shadow-6" [style]="{margin: '5px'}" [toggleable]="true">
+    <ng-template pTemplate="header">
+      <h1 style="display: inline-block"><b>{{adoptedPet.name}}, {{adoptedPet.breed}}</b></h1>
+
+    </ng-template>
+    <ng-template pTemplate="icons">
+      <button
+        *ngIf="adoptionForm.accepted === true || adoptionForm.rejected === true"
+        (click)="onClear()"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        class="p-button-rounded p-button-plain p-button-text"></button>
+      <p-tag
+       *ngIf="adoptionForm.accepted === false && adoptionForm.rejected === false"
+       [style]="{fontSize: '12px'}"
+       styleClass="p-mr-2"
+       value="Pending"
+       [rounded]="true">
+     </p-tag>
+      <p-tag
+        *ngIf="adoptionForm.accepted === true"
+        [style]="{fontSize: '12px'}"
+        styleClass="p-mr-2"
+        severity="success"
+        value="Accepted"
+        [rounded]="true">
+      </p-tag>
+      <p-tag
+        *ngIf="adoptionForm.rejected === true"
+        [style]="{fontSize: '12px'}"
+        styleClass="p-mr-2"
+        severity="danger"
+        value="Rejected"
+        [rounded]="true">
+      </p-tag>
+    </ng-template>
+    <img
+      [src]="adoptedPet.photoURL"
+      class="img-responsive "
+      style="max-height: 100px; max-width: 100%; display: inline-block; margin-right: 20px;"
+      [alt]="adoptedPet.name"
+    >
+    <div style="display: inline-block">
+      <h5>Pet gender: {{adoptedPet.gender}}.</h5>
+      <h5>Pet age: {{age}}</h5>
+      <h5>Pet description: {{adoptedPet.description}}</h5>
+    </div>
+  </p-panel>
+</div>
