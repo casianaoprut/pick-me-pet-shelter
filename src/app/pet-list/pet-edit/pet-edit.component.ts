@@ -24,7 +24,8 @@ export class PetEditComponent implements OnInit {
     photoURL: '',
     addedDate: Timestamp.now(),
     birthDate: Timestamp.now(),
-    gender: ''
+    gender: '',
+    adopted: false
   };
   petBirthDate: Date | null = null;
   yearRange = new Date().getFullYear();
