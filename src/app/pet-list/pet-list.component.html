@@ -4,7 +4,10 @@
   ></app-pet-edit>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-lg-0 col-md-0">
+    <app-pet-filter></app-pet-filter>
+  </div>
+  <div class="col-xs-12 col-md-12 col-lg-12" style="display: inline-block">
     <div *ngIf="user && user.roles.admin">
       <button
         *ngIf="editMode"
