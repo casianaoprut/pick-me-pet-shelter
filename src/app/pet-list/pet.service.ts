@@ -35,7 +35,12 @@ export class PetService{
 
   getPet(petId: string): Observable<Pet>{
     const docRef: AngularFirestoreDocument = this.petsCollection.doc<Pet>(petId);
-    return docRef.valueChanges() as Observable<Pet>;
+    return docRef.valueChanges().pipe(map(pet => {
+      return {
+        ...pet,
+        id: petId
+      };
+    })) as Observable<Pet>;
   }
 
   public getAge(pet: Pet): number{
@@ -76,5 +81,4 @@ export class PetService{
     };
     return petRef.set(adoptedPet, {merge : true});
   }
-
 }

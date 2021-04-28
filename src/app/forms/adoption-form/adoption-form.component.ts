@@ -52,7 +52,9 @@ export class AdoptionFormComponent implements OnInit {
         otherPets: this.selectedValue,
         address: form.value.address,
         userUid: this.user.uid,
-        accepted: false
+        accepted: false,
+        rejected: false,
+        userReview: true
       };
       this.formService.submitAdoptionForm(adoptionForm);
       form.reset();
