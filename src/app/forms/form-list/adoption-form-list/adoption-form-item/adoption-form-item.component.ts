@@ -25,7 +25,10 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.petService.getPet(this.adoptionForm.petId).subscribe( pet => {
-      this.pet = pet;
+      this.pet = {
+        ...pet,
+        id: this.adoptionForm.petId
+      };
     });
   }
 
@@ -39,7 +42,7 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
 
   onAccept(): void {
     this.formService.acceptAdoptionForm(this.adoptionForm).then(() => {
-      if (this.pet) {
+      if (this.pet){
         this.petService.adoptPet(this.pet);
       }
     });

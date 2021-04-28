@@ -107,7 +107,8 @@ export class PetEditComponent implements OnInit {
         photoURL: this.photoURL,
         photoPath: this.photoPath,
         addedDate: Timestamp.now(),
-        birthDate: Timestamp.fromDate(birthDate)
+        birthDate: Timestamp.fromDate(birthDate),
+        adopted: false
       };
       this.petService.addPet(this.pet).then(() => {
         this.photoURL = '';
