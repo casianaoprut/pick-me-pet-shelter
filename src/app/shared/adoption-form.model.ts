@@ -8,4 +8,6 @@ export interface AdoptionForm {
   address: string;
   userUid: string;
   accepted: boolean;
+  rejected: boolean;
+  userReview: boolean;
 }

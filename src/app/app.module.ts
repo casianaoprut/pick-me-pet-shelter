@@ -33,6 +33,8 @@ import { FormListComponent } from './forms/form-list/form-list.component';
 import {PrimengModule} from './primeng.module';
 import {MaterialModule} from './material.module';
 import { DonationFormComponent } from './forms/donation-form/donation-form.component';
+import { UserFormsComponent } from './forms/user-forms/user-forms.component';
+import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { DonationFormComponent } from './forms/donation-form/donation-form.compo
     FormListComponent,
     AdoptionFormListComponent,
     AdoptionFormItemComponent,
+    UserFormsComponent,
+    UserFormItemComponent,
   ],
   imports: [
     BrowserModule,

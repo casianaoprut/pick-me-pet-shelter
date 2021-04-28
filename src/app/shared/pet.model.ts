@@ -11,5 +11,5 @@ export interface Pet{
   gender: string;
   id?: string;
   photoPath?: string;
-  adopted?: boolean;
+  adopted: boolean;
 }
