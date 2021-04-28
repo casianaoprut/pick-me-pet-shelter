@@ -1,19 +1,52 @@
-<div *ngIf="!user">
-  <h1>Nu sunteti logat!</h1>
+<div *ngIf="showDetails && selectedPet !== null" style="display: inline-block">
+  <app-pet-details
+    [pet]="selectedPet"
+    (closeDetails)="onHideDetails()"
+  ></app-pet-details>
 </div>
-<div *ngIf="user">
-  <h1>Sunteti logat!</h1>
-  <h1>{{user.displayName}}</h1>
-  <h1 *ngIf="user.roles.customer">Customer</h1>
-  <h1 *ngIf="user.roles.admin">Admin</h1>
-  <h1>{{user.email}}</h1>
-  <img
-    [src]="
-    user.photoURL?
-     user.photoURL :
-      'https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf'"
-    alt="userPhoto"
-    style="height: 100px;"
-  >
-</div>
+<p-carousel
+  [value]="pets"
+  styleClass="custom-carousel"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="3000"
+  [responsiveOptions]="responsiveOptions">
+  <ng-template pTemplate="header">
+    <h3 style="text-align: center"><b>The pets that stayed longest with us!</b></h3>
+  </ng-template>
+  <ng-template let-pet pTemplate="item">
+    <p-card [style]="{margin: '5px'}" header="{{pet.name}}, {{getAge(pet)}} years">
+      <ng-template pTemplate="header">
+        <img
+          [src]="pet.photoURL"
+          alt="{{ pet.name }}"
+          class="img-responsive center-block"
+          style="max-height: 150px; width: auto;">
+      </ng-template>
+      <h5>{{pet.breed }}</h5>
+      <h5 *ngIf="pet.description !== undefined">
+        {{pet.description.length > 50 ? pet.description.slice(0,50)+'...' : pet.description}}
+      </h5>
+      <ng-template pTemplate="footer">
+        <div>
+          <button
+            style="font-size: 13px; width: 80px"
+            pButton
+            class="p-button-success p-button-rounded"
+            label="Adopt Me!"
+            (click)="onAdoptMe(pet)"
+          ></button>
+          <button
+            (click)="onShowDetails(pet)"
+            style="font-size: 13px; width: 80px;"
+            pButton
+            class="p-button-info p-button-rounded pull-right"
+            label="Details"
+          ></button>
+        </div>
+      </ng-template>
+    </p-card>
+  </ng-template>
+</p-carousel>
 

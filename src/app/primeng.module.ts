@@ -12,6 +12,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import { TagModule } from 'primeng/tag';
     CalendarModule,
     FileUploadModule,
     PanelModule,
-    TagModule
+    TagModule,
+    CarouselModule
   ],
   exports: [
     PasswordModule,
@@ -43,7 +45,8 @@ import { TagModule } from 'primeng/tag';
     CalendarModule,
     FileUploadModule,
     PanelModule,
-    TagModule
+    TagModule,
+    CarouselModule
   ]
 })
 export class PrimengModule { }
