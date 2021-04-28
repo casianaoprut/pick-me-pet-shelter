@@ -1,67 +1,42 @@
-.navbar-default {
-  padding-bottom: 0;
-}
 .logo {
   position: relative;
-  top: -70%;
-  left: 20%;
+  top: -60%;
+  left: 10%;
 }
 .name {
   position: relative;
-  top: -80%;
+  top: -60%;
+  left: -10px;
   font-size: 17px;
   color: -moz-default-background-color;
   font-family: "Rockwell Condensed";
 }
-.petList {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 20px;
-  position: relative;
-  margin-top: 10%;
+
+nav ul:last-of-type {
+  margin-right: 10px;
 }
-.volunteer {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 20px;
-  position: relative;
-  margin-top: 8%;
+
+nav ul li a p {
+    font-family: Rockwell;
+    font-size: 16px;
+    margin-top: 6px;
 }
-.loginin {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 20px;
-  position: relative;
-  margin-top: 10%;
+
+
+@media (max-width: 770px) {
+  .logo {
+    position: relative;
+    top: -90%;
+    left: 9%;
+  }
+
+  .name {
+    position: relative;
+    top: -23px;
+    left: -10px;
+    font-size: 17px;
+  }
 }
-.donate {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 20px;
-  position: relative;
-  margin-top: 10%;
-}
-.manage {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 15px;
-  position: center;
-}
-.adoption {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 15px;
-  position: center;
-}
-.updateList {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 15px;
-  position: center;
-}
-.logout {
-  color: -moz-default-background-color;
-  font-family: Rockwell;
-  font-size: 15px;
-  position: center;
-}
+
+
+
