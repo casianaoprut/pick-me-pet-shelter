@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  collapsed = true;
   user: User | null = null;
   subscription = new  Subscription();
 
@@ -55,7 +56,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onManageForms(): void{
     this.router.navigate(['/manage-forms']);
   }
-
   onDonation(): void{
     this.router.navigate(['/forms/donation']);
   }

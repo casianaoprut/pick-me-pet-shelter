@@ -10,6 +10,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
+import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
 
@@ -27,6 +28,8 @@ import { TagModule } from 'primeng/tag';
     InputTextareaModule,
     CalendarModule,
     FileUploadModule,
+    SidebarModule,
+    FileUploadModule,
     PanelModule,
     TagModule
   ],
@@ -41,6 +44,8 @@ import { TagModule } from 'primeng/tag';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
+    FileUploadModule,
+    SidebarModule,
     FileUploadModule,
     PanelModule,
     TagModule
