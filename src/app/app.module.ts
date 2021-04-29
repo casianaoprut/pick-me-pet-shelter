@@ -35,6 +35,7 @@ import {MaterialModule} from './material.module';
 import { DonationFormComponent } from './forms/donation-form/donation-form.component';
 import { UserFormsComponent } from './forms/user-forms/user-forms.component';
 import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
+// import {AgmCoreModule} from '@agm/core';
 
 
 @NgModule({
@@ -72,7 +73,10 @@ import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-fo
     BrowserAnimationsModule,
     PrimengModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCqrIMrOL182Wcr_d8iACvuFeIT2pK4_U0'
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]
