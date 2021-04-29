@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-lg-0 col-md-0">
-    <app-pet-filter></app-pet-filter>
+    <app-pet-filter (filtersChanged)="filterPets($event)"></app-pet-filter>
   </div>
   <div class="col-xs-12 col-md-12 col-lg-12" style="display: inline-block">
     <div *ngIf="user && user.roles.admin">
@@ -31,12 +31,13 @@
       ></button>
       <hr>
     </div>
+    <div style="text-align: center">
     <app-pet-item
-      *ngFor="let petElement of petList"
+      *ngFor="let petElement of filteredPetList"
       [pet]="petElement"
       [editMode]="editMode"
-    >
+      style="text-align: left">
     </app-pet-item>
   </div>
 </div>
-
+</div>

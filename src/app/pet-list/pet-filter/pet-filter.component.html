@@ -1,69 +1,54 @@
-<p-button label="Pet Filter" type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></p-button>
+<p-button label="Open Filters" type="button" (click)="visibleSidebar1 = true" class="p-button-rounded" icon="pi pi-arrow-right" style="font-size: 13px"></p-button>
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
 <div class="container-fluid">
+  <p style="margin-top: 30px">PET NAME</p>
+  <label>
+    <input [(ngModel)]="filteredName" (ngModelChange)="onCheckBoxPress()" style="width: 155px; margin-bottom: 7px">
+  </label>
 <section class="example-section" style=" font-family: Arial,serif;">
   <p>AGE</p>
   <div>
    <label>
-      <input [(ngModel)]="age[0]" type="checkbox" class="example-margin"> 0-1 Y
+      <input [(ngModel)]="ageBox[0]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> 0-1 Y
     </label><br>
     <label>
-      <input [(ngModel)]="age[1]" type="checkbox" class="example-margin"> 1-2 Y
+      <input [(ngModel)]="ageBox[1]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> 1-2 Y
     </label><br>
     <label>
-      <input [(ngModel)]="age[2]" type="checkbox" class="example-margin"> 2-3 Y
+      <input [(ngModel)]="ageBox[2]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> 2-3 Y
     </label><br>
     <label>
-      <input [(ngModel)]="age[3]" type="checkbox" class="example-margin"> 3+ Y
+      <input [(ngModel)]="ageBox[3]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> 3+ Y
     </label><br>
   </div>
   <p>BREED</p>
   <div>
   <label>
-    <input type="checkbox" class="example-margin"> Dog
+    <input [(ngModel)]="breedBox[0]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Dog
   </label><br>
   <label>
-    <input type="checkbox" class="example-margin"> Cat
+    <input [(ngModel)]="breedBox[1]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Cat
   </label><br>
   <label>
-    <input type="checkbox" class="example-margin"> Parrot
+    <input [(ngModel)]="breedBox[2]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Parrot
   </label><br>
   <label>
-    <input type="checkbox" class="example-margin"> Fish
+    <input [(ngModel)]="breedBox[3]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Fish
   </label><br>
   <label>
-    <input type="checkbox" class="example-margin"> Rabbit
+    <input [(ngModel)]="breedBox[4]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Rabbit
   </label><br>
   </div>
   <p>GENDER</p>
   <div>
    <label>
-    <input type="checkbox" class="example-margin"> Male
+    <input [(ngModel)]="genderBox[0]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Male
    </label><br>
    <label>
-    <input type="checkbox" class="example-margin"> Female
+    <input [(ngModel)]="genderBox[1]" (ngModelChange)="onCheckBoxPress()" type="checkbox" class="example-margin"> Female
    </label><br>
   </div>
-  <p>DAYS ON SHELTER</p>
-  <div>
-  <label>
-    <input type="checkbox" class="example-margin"> 1
-  </label><br>
-  <label>
-    <input type="checkbox" class="example-margin"> 7
-  </label><br>
-  <label>
-    <input type="checkbox" class="example-margin"> 14
-  </label><br>
-  <label>
-    <input type="checkbox" class="example-margin"> 30+
-  </label><br>
-  </div>
 </section>
-  <p>PET NAME</p>
-  <label>
-    <input style="width: 130px">
-  </label>
 </div>
 </p-sidebar>
 

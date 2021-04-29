@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {NgModel} from '@angular/forms';
-import {PetItemComponent} from '../pet-item/pet-item.component';
+import {Component, OnInit, Output, Predicate, EventEmitter} from '@angular/core';
+import { FilterService } from './filter.service';
+import {Pet} from '../../shared/pet.model';
 
 @Component({
   selector: 'app-pet-filter',
@@ -9,14 +9,25 @@ import {PetItemComponent} from '../pet-item/pet-item.component';
 })
 export class PetFilterComponent implements OnInit {
   visibleSidebar1 = false;
-  age: boolean[] = [];
-  constructor() { }
+  filteredName = '';
+  ageBox: boolean[] = [false, false, false, false];
+  breedBox: boolean[] = [false, false, false, false];
+  genderBox: boolean[] = [false, false];
+  constructor(
+    private filterService: FilterService
+  ) { }
+  @Output() filtersChanged = new EventEmitter<Predicate<Pet>[]>();
 
   ngOnInit(): void {
   }
-
-  // ageRange(): number[] {
-  //   if ()
-  // }
-
+  getBreed(): void {
+  }
+  onCheckBoxPress(): void{
+    const filters: Predicate<Pet>[] = [];
+    filters.push(this.filterService.getFilterForAge(this.ageBox));
+    filters.push(this.filterService.getFilterForBreed(this.breedBox));
+    filters.push(this.filterService.getFilterForGender(this.genderBox));
+    filters.push(this.filterService.getFilterForName(this.filteredName));
+    this.filtersChanged.emit(filters);
+  }
 }
