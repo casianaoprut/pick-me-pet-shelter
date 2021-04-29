@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import {Observable, of} from 'rxjs';
 
 import {User} from '../shared/user.model';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +70,16 @@ export class AuthService {
     }).catch( error => {
       window.alert(error.message);
     });
+  }
+
+  getUserPhoto(uid: string): Observable<string>{
+    const userCollection = this.afs.collection('users');
+    const docRef: AngularFirestoreDocument = userCollection.doc<User>(uid);
+    return docRef.valueChanges().pipe(map( user => {
+      if (user !== undefined) {
+      return user.photoURL;
+      }
+      return '';
+    }));
   }
 }

@@ -36,6 +36,8 @@ import { DonationFormComponent } from './forms/donation-form/donation-form.compo
 import {PetFilterComponent} from './pet-list/pet-filter/pet-filter.component';
 import { UserFormsComponent } from './forms/user-forms/user-forms.component';
 import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
+import {VolunteerFormListComponent} from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
+import {VolunteerFormItemComponent} from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-fo
     PetFilterComponent,
     UserFormsComponent,
     UserFormItemComponent,
+    VolunteerFormListComponent,
+    VolunteerFormItemComponent
   ],
   imports: [
     BrowserModule,
