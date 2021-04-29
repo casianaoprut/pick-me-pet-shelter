@@ -32,7 +32,7 @@ export class VolunteerFormComponent implements OnInit {
   onSubmit(form: NgForm): void {
     if (form.valid && this.user?.uid !== undefined) {
       const workDays: string[] = [];
-      workDays[0] = 'Program flexibil';
+
       if (form.value.monday){
         workDays[workDays.length] = 'Monday';
       }
@@ -48,6 +48,9 @@ export class VolunteerFormComponent implements OnInit {
       if (form.value.friday){
         workDays[workDays.length] = 'Friday';
       }
+      if (workDays.length === 0){
+        workDays[0] = 'Program Flexibil';
+      }
       const formData: VolunteerForm = {
         firstName: form.value.firstName,
         lastName: form.value.lastName,
@@ -57,6 +60,8 @@ export class VolunteerFormComponent implements OnInit {
         state: form.value.state,
         workDays,
         uidUser: this.user?.uid,
+        accepted: false,
+        rejected: false
       };
       this.formService.submitVolunteerForm(formData);
       form.reset();
