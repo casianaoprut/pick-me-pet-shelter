@@ -72,6 +72,12 @@ export class PetService{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
     return petRef.set(pet, {merge: true});
   }
+  // filterPet(pet: Pet): Promise<any>{
+  //   const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
+  //   const filterPet = {
+  //
+  //   };
+  // }
 
   adoptPet(pet: Pet): Promise<void>{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);

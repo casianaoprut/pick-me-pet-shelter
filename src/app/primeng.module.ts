@@ -13,6 +13,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
+import {SplitterModule} from 'primeng/splitter';
 
 @NgModule({
   declarations: [],
@@ -31,7 +32,8 @@ import { TagModule } from 'primeng/tag';
     SidebarModule,
     FileUploadModule,
     PanelModule,
-    TagModule
+    TagModule,
+    SplitterModule
   ],
   exports: [
     PasswordModule,
@@ -48,7 +50,8 @@ import { TagModule } from 'primeng/tag';
     SidebarModule,
     FileUploadModule,
     PanelModule,
-    TagModule
+    TagModule,
+    SplitterModule
   ]
 })
 export class PrimengModule { }
