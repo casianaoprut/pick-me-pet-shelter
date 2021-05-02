@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
-  {path: 'forms/donation', component: DonationFormComponent},
+  {path: 'forms/donation', component: DonationFormComponent, canActivate: [AuthGuard]},
   {path: 'manage-forms', component: FormListComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'my-forms', component: UserFormsComponent, canActivate: [AuthGuard]}
 ];

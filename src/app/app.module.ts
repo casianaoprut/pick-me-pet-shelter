@@ -38,7 +38,7 @@ import { UserFormsComponent } from './forms/user-forms/user-forms.component';
 import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
 import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
 import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
-
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -80,7 +80,7 @@ import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-lis
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,6 +3,7 @@ import {AuthService} from '../auth.service';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-email-sign-up',
@@ -18,7 +19,8 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private messageService: MessageService
   ) { }
 
   ngOnDestroy(): void {
@@ -39,7 +41,9 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
         this.photoPath = '';
         this.router.navigate(['/home-page']);
       }
-    );
+    ).catch(error => {
+      this.messageService.add({severity: 'error', summary: 'Error:', detail: error.message});
+    }); // TODO Add navigate back.
   }
 
   onHandleUploader(): void{

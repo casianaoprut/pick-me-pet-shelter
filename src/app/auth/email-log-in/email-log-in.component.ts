@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {User} from '../../shared/user.model';
 import {Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-email-log-in',
@@ -14,16 +15,16 @@ export class EmailLogInComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
   }
 
   onLogIn(form: NgForm): void{
-    this.authService.emailLogin(form.value.email, form.value.password).then(() => {
-        this.router.navigate(['/home-page']);
-      }
-    );
+    this.authService.emailLogin(form.value.email, form.value.password).catch(error => {
+      this.messageService.add({severity: 'error', summary: 'Error:', detail: error.message});
+    }).then(); // TODO Add navigate back.
   }
 }

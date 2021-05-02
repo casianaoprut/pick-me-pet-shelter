@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Location } from '@angular/common';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
@@ -11,7 +12,8 @@ export class GoogleSignInComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -19,13 +21,9 @@ export class GoogleSignInComponent implements OnInit {
 
   onGoogleSignIn(): void {
     this.authService.googleSignIn().then(() => {
-        this.router.navigate(['/home-page']);
+        this.location.back();
       }
     );
-  }
-
-  onLogout(): void{
-    this.authService.logout();
   }
 
 }
