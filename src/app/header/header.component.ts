@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void{
-    this.authService.logout();
+    this.authService.logout().then(() => window.location.reload());
   }
 
   onVolunteer(): void{

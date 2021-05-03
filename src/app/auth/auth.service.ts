@@ -66,11 +66,10 @@ export class AuthService {
 
   async emailLogin(email: string, password: string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password).then( userResult => {
-        this.updateUserData(userResult).catch((error) => {
-          window.alert(error.message);
-        });
-      }
-    );
+      this.updateUserData(userResult.user).catch((error) => {
+        window.alert(error.message);
+      });
+    });
   }
 
   getUserPhoto(uid: string): Observable<string>{

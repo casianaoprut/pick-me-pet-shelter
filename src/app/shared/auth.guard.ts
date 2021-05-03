@@ -20,8 +20,7 @@ export class AuthGuard implements CanActivate {
       map(user => !!user),
       tap(loggedIn => {
         if (!loggedIn){
-          window.alert('Please login first!');
-          this.router.navigate(['/auth']);
+          this.router.navigate(['/auth'], {queryParams: {returnUrl: route.routeConfig?.path}});
         }
       })
     );
