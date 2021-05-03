@@ -17,6 +17,7 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
   pet: Pet | null = null;
   subscription = new Subscription();
   @Input() adoptionForm!: AdoptionForm;
+  @Input() adminView = true;
 
   constructor(
     private petService: PetService,

@@ -19,7 +19,7 @@
   <h5> Address: {{adoptionForm.address}}</h5>
   <p-button [style]="{fontSize: '13px'}" label="Animal details" styleClass="p-button-link" (click)="onHandleDetails()"></p-button>
   <ng-template pTemplate="footer">
-    <div style="text-align: center">
+    <div *ngIf="adminView" style="text-align: center">
       <p-button
         label="Accept"
         icon="pi pi-check"
