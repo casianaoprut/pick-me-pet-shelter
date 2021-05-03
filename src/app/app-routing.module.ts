@@ -12,6 +12,7 @@ import {AdminGuard} from './shared/admin.guard';
 import {DonationFormComponent} from './forms/donation-form/donation-form.component';
 import {UserFormsComponent} from './forms/user-forms/user-forms.component';
 import {LoginGuard} from './shared/login.guard';
+import {AdoptionsListComponent} from './adoptions-list/adoptions-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/donation', component: DonationFormComponent, canActivate: [AuthGuard]},
   {path: 'manage-forms', component: FormListComponent, canActivate: [AuthGuard, AdminGuard]},
-  {path: 'my-forms', component: UserFormsComponent, canActivate: [AuthGuard]}
+  {path: 'my-forms', component: UserFormsComponent, canActivate: [AuthGuard]},
+  {path: 'adoptions-list', component: AdoptionsListComponent, canActivate: [AuthGuard, AdminGuard]}
 ];
 
 @NgModule({
