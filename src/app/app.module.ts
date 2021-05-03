@@ -39,7 +39,7 @@ import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-fo
 import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
 import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
 import { AdoptionsListComponent } from './adoptions-list/adoptions-list.component';
-
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -82,7 +82,7 @@ import { AdoptionsListComponent } from './adoptions-list/adoptions-list.componen
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
