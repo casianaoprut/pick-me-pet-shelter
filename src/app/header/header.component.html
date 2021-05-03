@@ -33,7 +33,7 @@
               </a>
             </li>
             <li *ngIf="user.roles.admin">
-              <a style="cursor: pointer">
+              <a style="cursor: pointer" (click)="onAdoptionList()">
                 <p class="adoption">Adoptions List</p>
               </a>
             </li>

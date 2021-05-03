@@ -15,6 +15,8 @@ export class FormService {
   adoptionForms = new Observable<AdoptionForm[]>();
   pendingVolunteerFormsCollection: AngularFirestoreCollection;
   volunteerForms = new Observable<VolunteerForm[]>();
+  adoptionList = new Observable<AdoptionForm[]>();
+  adoptionListCollection: AngularFirestoreCollection;
 
   constructor(
     private afs: AngularFirestore
@@ -36,6 +38,16 @@ export class FormService {
       return changes.map(a => {
         const data = a.payload.doc.data() as VolunteerForm;
         data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.adoptionListCollection = this.afs.collection('adoption-forms', ref => {
+      return ref.where('accepted', '==', true);
+    });
+    this.adoptionList = this.adoptionListCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as AdoptionForm;
+        data.idForm = a.payload.doc.id;
         return data;
       });
     }));

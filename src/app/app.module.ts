@@ -38,6 +38,7 @@ import { UserFormsComponent } from './forms/user-forms/user-forms.component';
 import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
 import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
 import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
+import { AdoptionsListComponent } from './adoptions-list/adoptions-list.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-lis
     UserFormItemComponent,
     VolunteerFormListComponent,
     VolunteerFormItemComponent,
+    AdoptionsListComponent,
   ],
   imports: [
     BrowserModule,

@@ -63,4 +63,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMyForms(): void{
     this.router.navigate(['/my-forms']);
   }
+  onAdoptionList(): void{
+    this.router.navigate(['/adoptions-list']);
+  }
 }
