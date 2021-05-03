@@ -7,4 +7,7 @@ export interface VolunteerForm {
   state: string;
   workDays: string [];
   uidUser: string;
+  accepted: boolean;
+  rejected: boolean;
+  id?: string;
 }

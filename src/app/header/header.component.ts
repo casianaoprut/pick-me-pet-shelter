@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  collapsed = true;
   user: User | null = null;
   subscription = new  Subscription();
 
@@ -45,7 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void{
-    this.authService.logout();
+    this.authService.logout().then(() => window.location.reload());
   }
 
   onVolunteer(): void{
@@ -55,12 +56,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onManageForms(): void{
     this.router.navigate(['/manage-forms']);
   }
-
   onDonation(): void{
     this.router.navigate(['/forms/donation']);
   }
 
   onMyForms(): void{
     this.router.navigate(['/my-forms']);
+  }
+  onAdoptionList(): void{
+    this.router.navigate(['/adoptions-list']);
   }
 }

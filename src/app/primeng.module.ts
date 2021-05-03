@@ -10,10 +10,14 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
+import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
 import {CarouselModule} from 'primeng/carousel';
 import {GMapModule} from 'primeng/gmap';
+import {SplitterModule} from 'primeng/splitter';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [],
@@ -28,11 +32,16 @@ import {GMapModule} from 'primeng/gmap';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
+    SidebarModule,
     FileUploadModule,
     PanelModule,
     TagModule,
     CarouselModule,
-    GMapModule
+    GMapModule,
+    TagModule,
+    SplitterModule,
+    MessagesModule,
+    MessageModule,
   ],
   exports: [
     PasswordModule,
@@ -45,11 +54,16 @@ import {GMapModule} from 'primeng/gmap';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
+    SidebarModule,
     FileUploadModule,
     PanelModule,
     TagModule,
     CarouselModule,
-    GMapModule
+    GMapModule,
+    TagModule,
+    SplitterModule,
+    MessagesModule,
+    MessageModule,
   ]
 })
 export class PrimengModule { }

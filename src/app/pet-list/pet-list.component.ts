@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Predicate} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 import {PetService} from './pet.service';
@@ -16,7 +16,8 @@ export class PetListComponent implements OnInit, OnDestroy {
 
   user: User | null = null;
   editMode = false;
-  petList: Pet[] = [];
+  filteredPetList: Pet[] = [];
+  completePetList: Pet[] = [];
   petSubscription = new Subscription();
   userSubscription = new Subscription();
   showAddPet = false;
@@ -28,7 +29,8 @@ export class PetListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.petSubscription = this.petService.pets.subscribe( pets => {
-      this.petList = pets;
+      this.completePetList = pets;
+      this.filteredPetList = pets;
     });
     this.userSubscription = this.authService.user$.subscribe(user => {
       if (user){
@@ -50,6 +52,9 @@ export class PetListComponent implements OnInit, OnDestroy {
   onHandleAddPet(): void{
     this.showAddPet = !this.showAddPet;
   }
-
-
+  filterPets(filters: Predicate<Pet>[]): void{
+    this.filteredPetList = this.completePetList.filter(pet => {
+      return filters.every(f => f(pet));
+    });
+  }
 }

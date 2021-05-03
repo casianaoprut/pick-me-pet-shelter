@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import {Observable, of} from 'rxjs';
 
 import {User} from '../shared/user.model';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -56,7 +56,7 @@ export class AuthService {
   }
 
   async emailAndPasswordSignIn(email: string, password: string, displayName: string, photoURL?: string): Promise<void>{
-    this.afAuth.createUserWithEmailAndPassword(email, password).then( result => {
+    return this.afAuth.createUserWithEmailAndPassword(email, password).then( result => {
         this.updateUserData(result.user, displayName, photoURL).catch((error) => {
           window.alert(error.message);
         });
@@ -65,10 +65,21 @@ export class AuthService {
   }
 
   async emailLogin(email: string, password: string): Promise<void> {
-    this.afAuth.signInWithEmailAndPassword(email, password).then( userResult => {
-      this.updateUserData(userResult);
-    }).catch( error => {
-      window.alert(error.message);
+    return this.afAuth.signInWithEmailAndPassword(email, password).then( userResult => {
+      this.updateUserData(userResult.user).catch((error) => {
+        window.alert(error.message);
+      });
     });
+  }
+
+  getUserPhoto(uid: string): Observable<string>{
+    const userCollection = this.afs.collection('users');
+    const docRef: AngularFirestoreDocument = userCollection.doc<User>(uid);
+    return docRef.valueChanges().pipe(map( user => {
+      if (user !== undefined) {
+      return user.photoURL;
+      }
+      return '';
+    }));
   }
 }

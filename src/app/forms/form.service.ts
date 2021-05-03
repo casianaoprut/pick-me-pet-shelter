@@ -13,6 +13,10 @@ export class FormService {
 
   pendingAdoptionFormsCollection: AngularFirestoreCollection;
   adoptionForms = new Observable<AdoptionForm[]>();
+  pendingVolunteerFormsCollection: AngularFirestoreCollection;
+  volunteerForms = new Observable<VolunteerForm[]>();
+  adoptionList = new Observable<AdoptionForm[]>();
+  adoptionListCollection: AngularFirestoreCollection;
 
   constructor(
     private afs: AngularFirestore
@@ -21,6 +25,26 @@ export class FormService {
       return ref.where('accepted', '==', false).where('rejected', '==', false);
     });
     this.adoptionForms = this.pendingAdoptionFormsCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as AdoptionForm;
+        data.idForm = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.pendingVolunteerFormsCollection = this.afs.collection('volunteer-forms', ref => {
+      return ref.where('accepted', '==', false).where('rejected', '==', false);
+    });
+    this.volunteerForms = this.pendingVolunteerFormsCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as VolunteerForm;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.adoptionListCollection = this.afs.collection('adoption-forms', ref => {
+      return ref.where('accepted', '==', true);
+    });
+    this.adoptionList = this.adoptionListCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as AdoptionForm;
         data.idForm = a.payload.doc.id;
@@ -44,6 +68,24 @@ export class FormService {
       accepted: true,
     };
     return formRef.set(acceptedForm, {merge: true});
+  }
+
+  acceptVolunteerForm(form: VolunteerForm): Promise<void>{
+    const formRef: AngularFirestoreDocument<VolunteerForm> = this.afs.doc(`volunteer-forms/${form.id}`);
+    const acceptedForm: VolunteerForm = {
+      ...form,
+      accepted: true,
+    };
+    return formRef.set(acceptedForm, {merge: true});
+  }
+
+  rejectVolunteerForm(form: VolunteerForm): Promise<void>{
+    const formRef: AngularFirestoreDocument<VolunteerForm> = this.afs.doc(`volunteer-forms/${form.id}`);
+    const rejectedForm: VolunteerForm = {
+      ...form,
+      rejected: true,
+    };
+    return formRef.set(rejectedForm, {merge: true});
   }
 
   rejectAdoptionForm(form: AdoptionForm): Promise<void>{

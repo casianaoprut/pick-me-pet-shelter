@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-email-sign-up',
@@ -17,8 +18,10 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private messageService: MessageService
   ) { }
 
   ngOnDestroy(): void {
@@ -31,6 +34,7 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
   }
 
   onSignUp(form: NgForm): void{
+    let isError = false;
     this.authService.emailAndPasswordSignIn(
       form.value.email,
       form.value.password,
@@ -39,7 +43,21 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
         this.photoPath = '';
         this.router.navigate(['/home-page']);
       }
-    );
+    ).catch(error => {
+      isError = true;
+      this.messageService.clear();
+      this.messageService.add({severity: 'error', summary: 'Error:', detail: error.message});
+    }).then(() => {
+      if (!isError){
+        this.route.queryParams.subscribe(params => {
+          if (params.returnUrl !== undefined) {
+            this.router.navigate(['/'  + params.returnUrl]);
+          } else {
+            this.router.navigate(['/home-page']);
+          }
+        });
+      }
+    });
   }
 
   onHandleUploader(): void{

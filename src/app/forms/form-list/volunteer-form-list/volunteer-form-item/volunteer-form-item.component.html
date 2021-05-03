@@ -1,0 +1,38 @@
+<div style="margin-top: 10px; text-align: left">
+  <p-panel styleClass="p-shadow-6" [style]="{margin: '5px'}" [toggleable]="true">
+    <ng-template pTemplate="header">
+      <h2 style="display: inline-block"><b>{{volunteerForm.firstName}} {{volunteerForm.lastName}}</b></h2>
+
+    </ng-template>
+    <ng-template pTemplate="icons">
+      <button style="margin-right: 5px; font-size: 13px"
+        (click)="onAccept()"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-check"
+        label="Accept"
+        class="p-button-rounded p-button-success"></button>
+      <button
+        (click)="onReject()"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        label="Reject"
+        style="font-size: 13px"
+        class="p-button-rounded p-button-danger"></button>
+    </ng-template>
+    <img
+      [src]="userPhoto"
+      class="img-responsive "
+      style="max-height: 100px; max-width: 100%; display: inline-block; margin-right: 20px; "
+      alt="userPhoto"
+    >
+    <div style="display: inline-block">
+      <h5>Phone Number: {{volunteerForm.phoneNumber}}.</h5>
+      <h5>Address: {{volunteerForm.state}}, {{volunteerForm.city}}, {{volunteerForm.address}}</h5>
+      <h5>Work Program: {{volunteerForm.workDays}}</h5>
+    </div>
+  </p-panel>
+</div>
