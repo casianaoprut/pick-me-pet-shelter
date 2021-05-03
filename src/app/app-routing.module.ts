@@ -11,12 +11,13 @@ import {FormListComponent} from './forms/form-list/form-list.component';
 import {AdminGuard} from './shared/admin.guard';
 import {DonationFormComponent} from './forms/donation-form/donation-form.component';
 import {UserFormsComponent} from './forms/user-forms/user-forms.component';
+import {LoginGuard} from './shared/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
   {path: 'home-page', component: HomePageComponent},
   {path: 'pets', component: PetListComponent},
-  {path: 'auth', component: AuthComponent},
+  {path: 'auth', component: AuthComponent, canActivate: [LoginGuard]},
   {path: 'forms/adoption', component: AdoptionFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/volunteer', component: VolunteerFormComponent, canActivate: [AuthGuard]},
   {path: 'forms/donation', component: DonationFormComponent, canActivate: [AuthGuard]},
