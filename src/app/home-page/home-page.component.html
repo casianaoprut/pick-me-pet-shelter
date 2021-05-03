@@ -4,8 +4,28 @@
     (closeDetails)="onHideDetails()"
   ></app-pet-details>
 </div>
+<div style="text-align: center; margin: 10px">
+<p><b>A place where you can find the newest member of your family!</b></p>
+  <p>If you want to join our team, make an account and fill the form. We are always looking for new pet lovers to help us!</p>
+  <img
+    style="height: 470px; margin: 5px"
+    src="https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/home-page%20photo%201.jpg?alt=media&token=057d170f-afbb-404b-9121-0a4d27ebf80d"
+    alt="home-page photo"
+  >
+  <img
+    style="margin: 5px"
+    src="https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/Pet-Adoption-Slogans.jpg?alt=media&token=3573053c-e273-4775-97c6-17def4979156"
+    alt="home-page photo"
+  >
+  <img
+    style="height: 470px; margin: 5px"
+    src="https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/home-page%20photo%202.jpg?alt=media&token=8f1e07c6-c5e2-467c-a1a4-9709d6872c1c"
+    alt="home-page photo"
+  >
+</div>
 <p-carousel
   [value]="pets"
+  [style]="{margin: '10px'}"
   styleClass="custom-carousel"
   [numVisible]="3"
   [numScroll]="1"
@@ -49,6 +69,14 @@
     </p-card>
   </ng-template>
 </p-carousel>
-<p-panel header="About us" class="p-shadow-5">
-  <p>Description. Soon to be determined.</p>
-</p-panel>
+<div style="margin: 10px; text-align: center">
+  <label for="map">Here you can find us!</label>
+  <agm-map id="map" [latitude]="lat" [longitude]="lng" style="height: 200px">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>
+<div style="margin: 10px">
+  <p-panel header="About us" class="p-shadow-5" [style]="{textAlign: 'center'}">
+    <h5>We are a team of two people who love animals, wanting to pass our FIS course and learn some new, fun things about web development.</h5>
+  </p-panel>
+</div>

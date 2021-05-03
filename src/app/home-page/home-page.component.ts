@@ -17,6 +17,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   responsiveOptions: any;
   showDetails = false;
   selectedPet: Pet | null = null;
+  lat = 45.527235;
+  lng = 22.457003;
 
   constructor(
     private petService: PetService,
@@ -41,7 +43,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     ];
     this.petSubscription = this.petService.oldestPets.subscribe(resultPets => {
       this.pets = resultPets.filter(pet => !pet.adopted).slice(0, 9) as Pet[];
-      console.log(this.pets);
     });
   }
 
