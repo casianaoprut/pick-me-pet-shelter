@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {AuthService} from '../../auth/auth.service';
-import {User} from '../../shared/user.model';
-import {Subscription} from 'rxjs';
-import {FormService} from '../form.service';
+import {MessageService} from 'primeng/api';
+
 
 @Component({
   selector: 'app-donation-form',
   templateUrl: './donation-form.component.html',
-  styleUrls: ['./donation-form.component.css']
+  styleUrls: ['./donation-form.component.css'],
+  providers: [MessageService]
 })
-export class DonationFormComponent implements OnInit {
+export class DonationFormComponent implements OnInit, OnDestroy {
 
   constructor(
-    private router: Router,
-    private authService: AuthService,
-    private formService: FormService
+    private messageService: MessageService,
   ) {}
 
   ngOnInit(): void {
   }
   onSubmit(form: NgForm): void {
   form.reset();
-  this.router.navigate(['/pets']);
+  this.messageService.clear();
+  this.messageService.add({severity: 'success', summary: 'Thank you!', detail: 'You make a pet happy!'});
 }
+
+  ngOnDestroy(): void {
+    this.messageService.clear();
+  }
 }
