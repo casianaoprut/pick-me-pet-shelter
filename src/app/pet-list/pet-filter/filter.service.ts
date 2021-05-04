@@ -24,11 +24,11 @@ export class FilterService {
   getFilterForAge(ages: boolean[]): Predicate<Pet> {
     return pet => {
       for (let i = 0; i <= 2; i++) {
-        if (ages[i] && this.petService.getAge(pet) === i) {
+        if (ages[i] && this.petService.getAgeInYears(pet) === i) {
           return true;
         }
       }
-      if (ages[3] && this.petService.getAge(pet) >= 3) {
+      if (ages[3] && this.petService.getAgeInYears(pet) >= 3) {
         return true;
       }
       return !ages[0] &&

@@ -24,7 +24,6 @@ export class AuthComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.subscription = this.myMessageService.msg.subscribe(message => {
-      console.log('auth: ', message);
       if (message === null){
         this.msg = [];
       } else {

@@ -32,7 +32,7 @@ export class PetDetailsComponent implements OnInit {
       this.pet.birthDate.toDate().getDate() + '/' +
       (this.pet.birthDate.toDate().getMonth() + 1) + '/' +
       this.pet.birthDate.toDate().getFullYear();
-    this.age = this.petService.getAge(this.pet);
+    this.age = this.petService.getAgeInYears(this.pet);
   }
 
   onClose(): void {

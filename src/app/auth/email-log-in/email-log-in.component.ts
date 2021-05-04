@@ -11,6 +11,7 @@ import {MyMessageService} from '../../shared/my-message.service';
   styleUrls: ['./email-log-in.component.css']
 })
 export class EmailLogInComponent implements OnInit {
+
   user: User | undefined | null;
 
   constructor(
@@ -36,7 +37,7 @@ export class EmailLogInComponent implements OnInit {
           } else {
             this.router.navigate(['/home-page']);
           }
-        });
+        }).unsubscribe();
       }
     });
   }

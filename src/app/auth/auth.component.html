@@ -1,6 +1,8 @@
 <div class="row" >
   <div class="col-md-12 ">
-    <p-messages [(value)]="msg"></p-messages>
+    <div style="height: 50px">
+      <p-messages [(value)]="msg"></p-messages>
+    </div>
     <div *ngIf="isLoginMode">
       <app-email-log-in></app-email-log-in>
       <app-google-sign-in></app-google-sign-in>

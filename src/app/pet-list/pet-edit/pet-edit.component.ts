@@ -78,45 +78,56 @@ export class PetEditComponent implements OnInit {
                 this.photoURL = rez;
                 this.photoPath = path;
                 this.onHandleUploader();
-              });
+              }).unsubscribe();
           }
         }
-      );
+      ).unsubscribe();
   }
 
   onSubmit(form: NgForm): void{
-    const birthDate = this.petBirthDate !== null ? this.petBirthDate : new Date();
     if (this.pet.photoURL !== ''){
-      if (this.pet.photoPath) {
-        this.storage.ref(this.pet.photoPath).delete();
-      }
-      this.pet = {
-        ...this.pet,
-        photoPath: this.photoPath,
-        photoURL: this.photoURL !== '' ? this.photoURL : this.pet.photoURL,
-        birthDate: Timestamp.fromDate(birthDate)
-      };
-      this.petService.editPet(this.pet).then(() => {
-        this.photoURL = '';
-        this.photoPath = '';
-        this.onClose();
-      });
+      this.onEditPet();
     } else {
-      this.pet = {
-        ...this.pet,
-        photoURL: this.photoURL,
-        photoPath: this.photoPath,
-        addedDate: Timestamp.now(),
-        birthDate: Timestamp.fromDate(birthDate),
-        adopted: false
-      };
-      this.petService.addPet(this.pet).then(() => {
-        this.photoURL = '';
-        this.photoPath = '';
-        this.onClose();
-      });
+      this.onSubmitPet();
     }
     form.reset();
   }
 
+  onEditPet(): void {
+    const birthDate = this.petBirthDate ? this.petBirthDate : new Date();
+    console.log('onEdit: ' + this.pet.photoPath + ' .local path:' + this.photoPath);
+    if (this.photoPath !== '' && this.pet.photoPath !== '') {
+      if (this.pet.photoPath) {
+        this.storage.ref(this.pet.photoPath).delete();
+      }
+    }
+    const pet = {
+      ...this.pet,
+      photoPath: this.photoPath,
+      photoURL: this.photoURL === '' ? this.pet.photoURL : this.photoURL,
+      birthDate: Timestamp.fromDate(birthDate)
+    };
+    this.petService.editPet(pet).then(() => {
+      this.photoURL = '';
+      this.photoPath = '';
+      this.onClose();
+    });
+  }
+
+  onSubmitPet(): void{
+    const birthDate = this.petBirthDate ? this.petBirthDate : new Date();
+    const pet = {
+      ...this.pet,
+      photoURL: this.photoURL,
+      photoPath: this.photoPath,
+      addedDate: Timestamp.now(),
+      birthDate: Timestamp.fromDate(birthDate),
+      adopted: false
+    };
+    this.petService.addPet(pet).then(() => {
+      this.photoURL = '';
+      this.photoPath = '';
+      this.onClose();
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
@@ -15,7 +15,7 @@ import {User} from '../../shared/user.model';
   templateUrl: './adoption-form.component.html',
   styleUrls: ['./adoption-form.component.css']
 })
-export class AdoptionFormComponent implements OnInit {
+export class AdoptionFormComponent implements OnInit, OnDestroy {
 
   user: User | null = null;
   subscription = new Subscription();
@@ -27,6 +27,10 @@ export class AdoptionFormComponent implements OnInit {
     private formService: FormService,
     private authService: AuthService
   ) { }
+
+  ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
 
   ngOnInit(): void {
     this.selectedPet = JSON.parse(localStorage.getItem('selectedPet') as string);

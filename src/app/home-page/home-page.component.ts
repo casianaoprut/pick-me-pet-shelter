@@ -50,7 +50,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   getAge(pet: Pet): number{
-    return this.petService.getAge(pet);
+    return this.petService.getAgeInYears(pet);
   }
 
   ngOnDestroy(): void {
