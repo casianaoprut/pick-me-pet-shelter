@@ -13,6 +13,8 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
+import {CarouselModule} from 'primeng/carousel';
+import {GMapModule} from 'primeng/gmap';
 import {SplitterModule} from 'primeng/splitter';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
@@ -34,6 +36,9 @@ import {MessageModule} from 'primeng/message';
     FileUploadModule,
     PanelModule,
     TagModule,
+    CarouselModule,
+    GMapModule,
+    TagModule,
     SplitterModule,
     MessagesModule,
     MessageModule,
@@ -52,6 +57,9 @@ import {MessageModule} from 'primeng/message';
     SidebarModule,
     FileUploadModule,
     PanelModule,
+    TagModule,
+    CarouselModule,
+    GMapModule,
     TagModule,
     SplitterModule,
     MessagesModule,
