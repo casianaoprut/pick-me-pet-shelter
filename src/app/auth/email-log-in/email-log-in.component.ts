@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {User} from '../../shared/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MessageService} from 'primeng/api';
+import {MyMessageService} from '../../shared/my-message.service';
 
 @Component({
   selector: 'app-email-log-in',
@@ -17,8 +17,8 @@ export class EmailLogInComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private messageService: MessageService
-  ) {}
+    private myMessageService: MyMessageService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -27,8 +27,7 @@ export class EmailLogInComponent implements OnInit {
     let isError = false;
     this.authService.emailLogin(form.value.email, form.value.password).catch(error => {
       isError = true;
-      this.messageService.clear();
-      this.messageService.add({severity: 'error', summary: 'Error:', detail: error.message});
+      this.myMessageService.addMessage({severity: 'error', summary: 'Error:', detail: error.message});
     }).then(() => {
       if (!isError){
         this.route.queryParams.subscribe(params => {

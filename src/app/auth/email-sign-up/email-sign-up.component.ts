@@ -3,7 +3,7 @@ import {AuthService} from '../auth.service';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {MessageService} from 'primeng/api';
+import {MyMessageService} from '../../shared/my-message.service';
 
 @Component({
   selector: 'app-email-sign-up',
@@ -21,7 +21,7 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private authService: AuthService,
     private storage: AngularFireStorage,
-    private messageService: MessageService
+    private myMessageService: MyMessageService
   ) { }
 
   ngOnDestroy(): void {
@@ -45,8 +45,7 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
       }
     ).catch(error => {
       isError = true;
-      this.messageService.clear();
-      this.messageService.add({severity: 'error', summary: 'Error:', detail: error.message});
+      this.myMessageService.addMessage({severity: 'error', summary: 'Error:', detail: error.message});
     }).then(() => {
       if (!isError){
         this.route.queryParams.subscribe(params => {
