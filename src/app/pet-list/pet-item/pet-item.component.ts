@@ -14,7 +14,6 @@ export class PetItemComponent implements OnInit {
   @Input() editMode = false;
   showDetails = false;
   showEditPetMode = false;
-  age = 0;
   @Input()
   pet!: Pet;
 
@@ -24,7 +23,6 @@ export class PetItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void{
-    this.age = this.petService.getAge(this.pet);
   }
 
   onHandleDetails(): void{
@@ -42,6 +40,14 @@ export class PetItemComponent implements OnInit {
 
   onHandleEditPetMode(): void{
     this.showEditPetMode = !this.showEditPetMode;
+  }
+
+  onGetAgeInYears(): number{
+    return this.petService.getAgeInYears(this.pet);
+  }
+
+  onGetAgeInMonths(): number{
+    return this.petService.getAgeInMonths(this.pet);
   }
 
 }

@@ -55,10 +55,10 @@ export class PetService{
     })) as Observable<Pet>;
   }
 
-  public getAge(pet: Pet): number{
+  public getAgeInYears(pet: Pet): number{
     const currentDate = new Date();
     const petBirthDate = pet.birthDate.toDate();
-    let age = (new Date()).getFullYear() - petBirthDate.getFullYear();
+    let age = currentDate.getFullYear() - petBirthDate.getFullYear();
     if (currentDate.getMonth() < petBirthDate.getMonth()){
       age--;
     } else {
@@ -67,6 +67,21 @@ export class PetService{
           age--;
         }
       }
+    }
+    return age;
+  }
+
+  public getAgeInMonths(pet: Pet): number{
+    const currentDate = new Date();
+    const petBirthDate = pet.birthDate.toDate();
+    let age;
+    if (currentDate.getFullYear() === petBirthDate.getFullYear()){
+      age = currentDate.getMonth() - petBirthDate.getMonth();
+    } else {
+      age = 12 - petBirthDate.getMonth() + currentDate.getMonth();
+    }
+    if (currentDate.getDay() < petBirthDate.getDay()){
+      age--;
     }
     return age;
   }
@@ -84,12 +99,6 @@ export class PetService{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
     return petRef.set(pet, {merge: true});
   }
-  // filterPet(pet: Pet): Promise<any>{
-  //   const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);
-  //   const filterPet = {
-  //
-  //   };
-  // }
 
   adoptPet(pet: Pet): Promise<void>{
     const petRef: AngularFirestoreDocument<Pet> = this.afs.doc(`pets/${pet.id}`);

@@ -11,7 +11,7 @@
   ></app-pet-edit>
 </div>
 <div style="display:inline-block; width: 300px; margin: 5px;">
-  <p-card header="{{pet.name}}, {{age}} years">
+  <p-card header="{{pet.name}}, {{onGetAgeInYears() > 0? onGetAgeInYears() + ' years' : onGetAgeInMonths() + ' months'}}">
     <ng-template pTemplate="header">
       <img
         [src]="pet.photoURL"

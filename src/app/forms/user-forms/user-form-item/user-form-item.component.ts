@@ -27,7 +27,7 @@ export class UserFormItemComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.petService.getPet(this.adoptionForm.petId).subscribe( pet => {
       this.adoptedPet = pet;
-      this.age = this.petService.getAge(pet);
+      this.age = this.petService.getAgeInYears(pet);
     });
   }
 
