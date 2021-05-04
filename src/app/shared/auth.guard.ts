@@ -3,12 +3,14 @@ import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Route
 import { Observable } from 'rxjs';
 import {AuthService} from '../auth/auth.service';
 import {map, take, tap} from 'rxjs/operators';
+import {MyMessageService} from './my-message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
   constructor(
+    private myMessageService: MyMessageService,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -20,7 +22,9 @@ export class AuthGuard implements CanActivate {
       map(user => !!user),
       tap(loggedIn => {
         if (!loggedIn){
-          this.router.navigate(['/auth'], {queryParams: {returnUrl: route.routeConfig?.path}});
+          this.router.navigate(['/auth'], {queryParams: {returnUrl: route.routeConfig?.path}}).then(() => {
+            this.myMessageService.addMessage({severity: 'info', summary: 'Info', detail: 'You need to login first!'});
+          });
         }
       })
     );

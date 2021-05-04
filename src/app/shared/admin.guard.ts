@@ -26,7 +26,6 @@ export class AdminGuard implements CanActivate {
       }),
       tap(loggedIn => {
         if (!loggedIn){
-          window.alert('Access denied!');
           this.router.navigate(['/home-page']);
         }
       })

@@ -37,8 +37,8 @@ export class AuthService {
     return this.updateUserData(credential.user);
   }
 
-  async logout(): Promise<void> {
-    await this.afAuth.signOut();
+   logout(): Promise<void> {
+    return this.afAuth.signOut();
   }
 
   private updateUserData(user: any, displayName?: string, photoURL?: string): Promise<void> {
