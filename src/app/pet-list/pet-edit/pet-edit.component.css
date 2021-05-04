@@ -20,3 +20,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
+@media screen and (max-width: 581px) {
+  .edit-box {
+    width: 100vw;
+    left: 0;
+  }
+}
+
+
