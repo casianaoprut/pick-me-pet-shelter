@@ -14,6 +14,8 @@ import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
 import {SplitterModule} from 'primeng/splitter';
+import {MessageModule} from 'primeng/message';
+import {MessagesModule} from 'primeng/messages';
 
 @NgModule({
   declarations: [],
@@ -33,7 +35,9 @@ import {SplitterModule} from 'primeng/splitter';
     FileUploadModule,
     PanelModule,
     TagModule,
-    SplitterModule
+    SplitterModule,
+    MessageModule,
+    MessagesModule,
   ],
   exports: [
     PasswordModule,
@@ -51,7 +55,8 @@ import {SplitterModule} from 'primeng/splitter';
     FileUploadModule,
     PanelModule,
     TagModule,
-    SplitterModule
+    SplitterModule,
+    MessageModule,
   ]
 })
 export class PrimengModule { }
