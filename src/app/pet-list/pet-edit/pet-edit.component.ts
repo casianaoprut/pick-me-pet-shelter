@@ -78,10 +78,10 @@ export class PetEditComponent implements OnInit {
                 this.photoURL = rez;
                 this.photoPath = path;
                 this.onHandleUploader();
-              });
+              }).unsubscribe();
           }
         }
-      );
+      ).unsubscribe();
   }
 
   onSubmit(form: NgForm): void{

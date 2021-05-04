@@ -26,7 +26,7 @@ export class GoogleSignInComponent implements OnInit {
           } else {
             this.router.navigate(['/home-page']);
           }
-        });
+        }).unsubscribe();
       }
     );
   }

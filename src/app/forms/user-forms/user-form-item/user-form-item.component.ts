@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 import {PetService} from '../../../pet-list/pet.service';
@@ -12,7 +12,7 @@ import {Pet} from '../../../shared/pet.model';
   templateUrl: './user-form-item.component.html',
   styleUrls: ['./user-form-item.component.css']
 })
-export class UserFormItemComponent implements OnInit {
+export class UserFormItemComponent implements OnInit, OnDestroy {
 
   subscription = new Subscription();
   adoptedPet: Pet | null = null;
@@ -23,6 +23,10 @@ export class UserFormItemComponent implements OnInit {
     private petService: PetService,
     private formService: FormService
   ) { }
+
+  ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
 
   ngOnInit(): void {
     this.subscription = this.petService.getPet(this.adoptionForm.petId).subscribe( pet => {

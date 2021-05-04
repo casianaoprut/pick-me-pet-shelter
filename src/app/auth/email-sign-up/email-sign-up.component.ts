@@ -54,7 +54,7 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
           } else {
             this.router.navigate(['/home-page']);
           }
-        });
+        }).unsubscribe();
       }
     });
   }
@@ -79,9 +79,9 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
                 this.photoURL = rez;
                 this.photoPath = path;
                 this.onHandleUploader();
-              });
+              }).unsubscribe();
           }
         }
-      );
+      ).unsubscribe();
   }
 }

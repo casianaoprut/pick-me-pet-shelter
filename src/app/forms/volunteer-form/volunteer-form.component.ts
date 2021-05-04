@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
@@ -12,7 +12,7 @@ import {FormService} from '../form.service';
   templateUrl: './volunteer-form.component.html',
   styleUrls: ['./volunteer-form.component.css']
 })
-export class VolunteerFormComponent implements OnInit {
+export class VolunteerFormComponent implements OnInit, OnDestroy {
 
   user: User | null = null;
   subscription = new Subscription();
@@ -21,6 +21,10 @@ export class VolunteerFormComponent implements OnInit {
     private authService: AuthService,
     private formService: FormService
   ) {}
+
+  ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
 
   ngOnInit(): void {
     this.subscription = this.authService.user$.subscribe(resultUser => {
