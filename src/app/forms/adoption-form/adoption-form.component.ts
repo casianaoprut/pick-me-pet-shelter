@@ -58,7 +58,7 @@ export class AdoptionFormComponent implements OnInit {
       };
       this.formService.submitAdoptionForm(adoptionForm);
       form.reset();
-      this.router.navigate(['/pets']);
+      this.router.navigate(['/my-forms']);
     }
   }
 }
