@@ -1,28 +1,4 @@
-<link href="https://cdn.jotfor.ms/static/formCss.css?3.3.24927" rel="stylesheet" type="text/css" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/nova.css?3.3.24927" />
-<link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.24927" />
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/566a91c2977cdfcd478b4567.css?"/>
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.24927" />
-
-<style type="text/css">
-  .form-line{
-    padding-top:12px;
-    padding-bottom:12px;
-  }
-
-  .form-all{
-    width:690px;
-    color:#555 !important;
-    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
-    font-size:14px;
-  }
-
-  .header-large {
-  }
-</style>
-
-<style type="text/css" id="form-designer-style">
-</style>
 
 <form #f="ngForm"
       action="https://submit.jotformeu.com/submit/211095034145345/" autocomplete="on" class="jotform-form"
@@ -47,7 +23,7 @@
               <input ngForm required type="text" id="first_3" name="q3_fullName[first]" class="form-textbox" size="10" value="" placeholder="First Name" data-component="first" aria-labelledby="label_3" />
             </span>
             <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-              <input ngForm required type="text" id="last_3" name="q3_fullName[last]" class="form-textbox" size="15" value="" placeholder="Last Name" data-component="last" aria-labelledby="label_3" />
+              <label for="last_3"></label><input ngForm required type="text" id="last_3" name="q3_fullName[last]" class="form-textbox" size="15" value="" placeholder="Last Name" data-component="last" aria-labelledby="label_3" />
             </span>
           </div>
         </div>
@@ -65,55 +41,36 @@
             <span class="form-radio-item" style="clear:left">
               <span class="dragger-item">
               </span>
-              <input ngForm required type="radio" class="form-radio" id="input_5_0" name="q5_donationAmount" value="$10" />
+              <input ngForm required type="radio" class="form-radio" id="input_5_0" name="q5_donationAmount" value="10" />
               <label id="label_input_5_0" for="input_5_0"> 10 Lei </label>
             </span>
             <span class="form-radio-item" style="clear:left">
               <span class="dragger-item">
               </span>
-              <input ngForm required type="radio" class="form-radio" id="input_5_1" name="q5_donationAmount" value="$25" />
+              <input ngForm required type="radio" class="form-radio" id="input_5_1" name="q5_donationAmount" value="25" />
               <label id="label_input_5_1" for="input_5_1"> 25 Lei</label>
             </span>
             <span class="form-radio-item" style="clear:left">
               <span class="dragger-item">
               </span>
-              <input ngForm required type="radio" class="form-radio" id="input_5_2" name="q5_donationAmount" value="$50" />
+              <input ngForm required type="radio" class="form-radio" id="input_5_2" name="q5_donationAmount" value="50" />
               <label id="label_input_5_2" for="input_5_2"> 50 Lei </label>
             </span>
             <span class="form-radio-item" style="clear:left">
               <span class="dragger-item">
               </span>
-              <input ngForm required type="radio" class="form-radio" id="input_5_3" name="q5_donationAmount" value="$100" />
+              <input ngForm required type="radio" class="form-radio" id="input_5_3" name="q5_donationAmount" value="100" />
               <label id="label_input_5_3" for="input_5_3"> 100 Lei </label>
             </span>
           </div>
         </div>
       </li>
-      <li class="form-line" data-type="control_textarea" id="id_6">
+      <li class="form-line" id="id_6">
         <label class="form-label form-label-top form-label-auto" id="label_6" for="input_6"> Comments </label>
         <div id="cid_6" class="form-input-wide">
           <textarea id="input_6" class="form-textarea" name="q6_comments" cols="70" rows="6" data-component="textarea" aria-labelledby="label_6"></textarea>
         </div>
       </li>
-     <!--<li class="form-line" data-type="control_radio" id="id_7">
-        <label class="form-label form-label-top form-label-auto" id="label_7"> Do you want to be included is the mailing list? </label>
-        <div id="cid_7" class="form-input-wide">
-          <div class="form-single-column" role="group" aria-labelledby="label_7" data-component="radio">
-            <span class="form-radio-item" style="clear:left">
-              <span class="dragger-item">
-              </span>
-              <input type="radio" class="form-radio" id="input_7_0" name="q7_doYou" value="Yes" />
-              <label id="label_input_7_0" for="input_7_0"> Yes </label>
-            </span>
-            <span class="form-radio-item" style="clear:left">
-              <span class="dragger-item">
-              </span>
-              <input type="radio" class="form-radio" id="input_7_1" name="q7_doYou" value="No" />
-              <label id="label_input_7_1" for="input_7_1"> No </label>
-            </span>
-          </div>
-        </div>
-      </li>-->
       <li class="form-line">
         <div id="cid_2" class="form-input-wide">
           <div style="margin-left:156px" data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
