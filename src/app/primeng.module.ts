@@ -13,9 +13,11 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {SidebarModule} from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { TagModule } from 'primeng/tag';
+import {CarouselModule} from 'primeng/carousel';
+import {GMapModule} from 'primeng/gmap';
 import {SplitterModule} from 'primeng/splitter';
-import {MessageModule} from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [],
@@ -30,14 +32,16 @@ import {MessagesModule} from 'primeng/messages';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
-    FileUploadModule,
     SidebarModule,
     FileUploadModule,
     PanelModule,
     TagModule,
+    CarouselModule,
+    GMapModule,
+    TagModule,
     SplitterModule,
-    MessageModule,
     MessagesModule,
+    MessageModule,
   ],
   exports: [
     PasswordModule,
@@ -50,12 +54,15 @@ import {MessagesModule} from 'primeng/messages';
     RadioButtonModule,
     InputTextareaModule,
     CalendarModule,
-    FileUploadModule,
     SidebarModule,
     FileUploadModule,
     PanelModule,
     TagModule,
+    CarouselModule,
+    GMapModule,
+    TagModule,
     SplitterModule,
+    MessagesModule,
     MessageModule,
   ]
 })

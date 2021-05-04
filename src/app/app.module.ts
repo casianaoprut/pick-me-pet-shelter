@@ -36,10 +36,11 @@ import { DonationFormComponent } from './forms/donation-form/donation-form.compo
 import {PetFilterComponent} from './pet-list/pet-filter/pet-filter.component';
 import { UserFormsComponent } from './forms/user-forms/user-forms.component';
 import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
+import {AgmCoreModule} from '@agm/core';
 import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
 import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
 import { AdoptionsListComponent } from './adoptions-list/adoptions-list.component';
-
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -80,9 +81,12 @@ import { AdoptionsListComponent } from './adoptions-list/adoptions-list.componen
     BrowserAnimationsModule,
     PrimengModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCqrIMrOL182Wcr_d8iACvuFeIT2pK4_U0'
+    })
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

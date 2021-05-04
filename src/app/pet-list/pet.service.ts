@@ -16,6 +16,8 @@ export class PetService{
   editMode = new Subject<boolean>();
   petsCollection: AngularFirestoreCollection;
   pets: Observable<Pet[]>;
+  oldestPetsCollection: AngularFirestoreCollection;
+  oldestPets: Observable<Pet[]>;
 
   constructor(
     private afStorage: AngularFireStorage,
@@ -25,6 +27,16 @@ export class PetService{
       return ref.where('adopted', '==', false);
     });
     this.pets = this.petsCollection.snapshotChanges().pipe( map( changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Pet;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.oldestPetsCollection = this.afs.collection('pets', ref => {
+      return ref.orderBy('addedDate', 'asc');
+    });
+    this.oldestPets = this.oldestPetsCollection.snapshotChanges().pipe( map( changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Pet;
         data.id = a.payload.doc.id;
