@@ -33,37 +33,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   }
-  onHomePage(): void{
-     this.router.navigate(['/home-page']);
-  }
-
-  onPetList(): void{
-    this.router.navigate(['/pets']);
-  }
-
-  onAuth(): void{
-    this.router.navigate(['/auth']);
-  }
 
   onLogout(): void{
     this.authService.logout().then(() => window.location.reload());
   }
 
-  onVolunteer(): void{
-    this.router.navigate(['/forms/volunteer']);
-  }
-
-  onManageForms(): void{
-    this.router.navigate(['/manage-forms']);
-  }
-  onDonation(): void{
-    this.router.navigate(['/forms/donation']);
-  }
-
-  onMyForms(): void{
-    this.router.navigate(['/my-forms']);
-  }
-  onAdoptionList(): void{
-    this.router.navigate(['/adoptions-list']);
-  }
 }
