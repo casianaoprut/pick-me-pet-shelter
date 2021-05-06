@@ -13,6 +13,7 @@ import {DonationFormComponent} from './forms/donation-form/donation-form.compone
 import {UserFormsComponent} from './forms/user-forms/user-forms.component';
 import {LoginGuard} from './shared/login.guard';
 import {AdoptionsListComponent} from './adoptions-list/adoptions-list.component';
+import {VolunteerListComponent} from './volunteer-list/volunteer-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home-page', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'forms/donation', component: DonationFormComponent, canActivate: [AuthGuard]},
   {path: 'manage-forms', component: FormListComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'my-forms', component: UserFormsComponent, canActivate: [AuthGuard]},
-  {path: 'adoptions-list', component: AdoptionsListComponent, canActivate: [AuthGuard, AdminGuard]}
+  {path: 'adoptions-list', component: AdoptionsListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'volunteer-list', component: VolunteerListComponent, canActivate: [AuthGuard, AdminGuard]}
 ];
 
 @NgModule({

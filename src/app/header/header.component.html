@@ -47,6 +47,11 @@
                 <p class="adoption">Adoptions List</p>
               </a>
             </li>
+            <li *ngIf="user.roles.admin" routerLinkActive="active">
+              <a style="cursor: pointer" routerLink="/volunteer-list">
+                <p class="adoption">Volunteer List</p>
+              </a>
+            </li>
             <li  routerLinkActive="active">
               <a style="cursor: pointer" routerLink="/my-forms">
                 <p class="manage">My forms</p>

@@ -10,4 +10,5 @@ export interface VolunteerForm {
   accepted: boolean;
   rejected: boolean;
   id?: string;
+  wantJob: boolean;
 }

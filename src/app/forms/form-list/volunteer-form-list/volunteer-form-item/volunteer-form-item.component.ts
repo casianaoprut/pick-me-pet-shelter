@@ -13,12 +13,21 @@ export class VolunteerFormItemComponent implements OnInit, OnDestroy {
 
   userPhoto = '';
   userPhotoSubscription = new Subscription();
+  @Input() adminView = false;
   @Input() volunteerForm!: VolunteerForm;
 
   constructor(
     private authService: AuthService,
     private formService: FormService
   ) { }
+
+  onClear(): void{
+    const form = {
+      ...this.volunteerForm,
+      accepted: false
+    };
+    this.formService.clearUserVolunteerForms(form);
+  }
 
   ngOnInit(): void {
     this.userPhotoSubscription = this.authService.getUserPhoto(this.volunteerForm.uidUser).subscribe(photo => {

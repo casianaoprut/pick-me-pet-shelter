@@ -5,23 +5,35 @@
 
     </ng-template>
     <ng-template pTemplate="icons">
-      <button style="margin-right: 5px; font-size: 13px"
-        (click)="onAccept()"
-        pButton
-        pRipple
-        type="button"
-        icon="pi pi-check"
-        label="Accept"
-        class="p-button-rounded p-button-success"></button>
-      <button
-        (click)="onReject()"
-        pButton
-        pRipple
-        type="button"
-        icon="pi pi-times"
-        label="Reject"
-        style="font-size: 13px"
-        class="p-button-rounded p-button-danger"></button>
+      <div *ngIf="!adminView">
+        <button style="margin-right: 5px; font-size: 13px"
+                (click)="onAccept()"
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-check"
+                label="Accept"
+                class="p-button-rounded p-button-success"></button>
+        <button
+          (click)="onReject()"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-times"
+          label="Reject"
+          style="font-size: 13px"
+          class="p-button-rounded p-button-danger"></button>
+      </div>
+      <div *ngIf="adminView">
+        <button
+          *ngIf="volunteerForm.wantJob === false"
+          (click)="onClear()"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-times"
+          class="p-button-rounded p-button-plain p-button-text"></button>
+      </div>
     </ng-template>
     <img
       [src]="userPhoto"
