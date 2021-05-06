@@ -41,6 +41,8 @@ import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-lis
 import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
 import { AdoptionsListComponent } from './adoptions-list/adoptions-list.component';
 import {MessageService} from 'primeng/api';
+import {UserVolunteerFormComponent} from './forms/user-forms/user-volunteer-form/user-volunteer-form.component';
+import { VolunteerListComponent } from './volunteer-list/volunteer-list.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import {MessageService} from 'primeng/api';
     VolunteerFormListComponent,
     VolunteerFormItemComponent,
     AdoptionsListComponent,
+    UserVolunteerFormComponent,
+    VolunteerListComponent,
   ],
   imports: [
     BrowserModule,

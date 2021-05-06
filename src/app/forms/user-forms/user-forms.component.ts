@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {User} from '../../shared/user.model';
 import {AdoptionForm} from '../../shared/adoption-form.model';
 import {FormService} from '../form.service';
+import {VolunteerForm} from '../../shared/volunteer-form.model';
 
 @Component({
   selector: 'app-user-forms',
@@ -17,6 +18,8 @@ export class UserFormsComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   adoptionSubscription = new Subscription();
   adoptionForms: AdoptionForm[] = [];
+  volunteerForms: VolunteerForm[] = [];
+  volunteerSubscription = new Subscription();
 
   constructor(
     private authService: AuthService,
@@ -32,6 +35,9 @@ export class UserFormsComponent implements OnInit, OnDestroy {
           this.adoptionSubscription = this.formService.getUserAdoptionForms(this.user.uid).subscribe( resultForms => {
             this.adoptionForms = resultForms;
           });
+          this.volunteerSubscription = this.formService.getUserVolunteerForms(this.user.uid).subscribe(resultForms => {
+            this.volunteerForms = resultForms;
+          });
         }
       } else {
         this.user = null;
@@ -42,6 +48,6 @@ export class UserFormsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.adoptionSubscription.unsubscribe();
+    this.volunteerSubscription.unsubscribe();
   }
-
 }
