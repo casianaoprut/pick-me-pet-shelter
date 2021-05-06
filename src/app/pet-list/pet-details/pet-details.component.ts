@@ -12,7 +12,6 @@ import {PetService} from '../pet.service';
 export class PetDetailsComponent implements OnInit {
   @Input()
   pet!: Pet;
-  age = 0;
 
   @Input()
   adminView = false;
@@ -32,7 +31,6 @@ export class PetDetailsComponent implements OnInit {
       this.pet.birthDate.toDate().getDate() + '/' +
       (this.pet.birthDate.toDate().getMonth() + 1) + '/' +
       this.pet.birthDate.toDate().getFullYear();
-    this.age = this.petService.getAgeInYears(this.pet);
   }
 
   onClose(): void {
@@ -42,6 +40,14 @@ export class PetDetailsComponent implements OnInit {
   onAdoptMe(): void{
     localStorage.setItem('selectedPet', JSON.stringify(this.pet));
     this.router.navigate(['forms/adoption']);
+  }
+
+  getAgeInYears(): number{
+    return this.petService.getAgeInYears(this.pet);
+  }
+
+  getAgeInMonths(): number{
+    return this.petService.getAgeInMonths(this.pet);
   }
 
 }
