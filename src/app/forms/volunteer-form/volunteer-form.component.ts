@@ -65,7 +65,8 @@ export class VolunteerFormComponent implements OnInit, OnDestroy {
         workDays,
         uidUser: this.user?.uid,
         accepted: false,
-        rejected: false
+        rejected: false,
+        wantJob: true
       };
       this.formService.submitVolunteerForm(formData);
       form.reset();

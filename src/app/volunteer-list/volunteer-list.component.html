@@ -1,0 +1,12 @@
+<mat-tab-group  mat-align-tabs="center">
+  <mat-tab label="Volunteers" >
+    <div *ngFor="let volunteer of volunteerList">
+      <app-volunteer-form-item [volunteerForm]="volunteer" [adminView]="true"></app-volunteer-form-item>
+    </div>
+  </mat-tab>
+  <mat-tab label="Quitters">
+    <div *ngFor="let quitter of quittersList">
+      <app-volunteer-form-item [volunteerForm]="quitter" [adminView]="true"></app-volunteer-form-item>
+    </div>
+  </mat-tab>
+</mat-tab-group>
