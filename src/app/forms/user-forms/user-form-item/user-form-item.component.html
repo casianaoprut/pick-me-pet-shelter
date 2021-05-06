@@ -45,7 +45,7 @@
     >
     <div style="display: inline-block">
       <h5>Pet gender: {{adoptedPet.gender}}.</h5>
-      <h5>Pet age: {{age}}</h5>
+      <h5>Pet age: {{getAgeInYears() > 0 ? getAgeInYears() + ' years' : getAgeInMonths() + ' months'}}</h5>
       <h5>Pet description: {{adoptedPet.description}}</h5>
     </div>
   </p-panel>
