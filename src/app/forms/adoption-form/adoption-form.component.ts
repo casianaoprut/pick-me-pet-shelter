@@ -34,6 +34,9 @@ export class AdoptionFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.selectedPet = JSON.parse(localStorage.getItem('selectedPet') as string);
+    if (this.selectedPet === null){
+      this.router.navigate(['/pets']);
+    }
     this.subscription = this.authService.user$.subscribe(user => {
       if (user !== undefined){
         this.user = user;
