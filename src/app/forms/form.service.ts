@@ -17,6 +17,8 @@ export class FormService {
   volunteerForms = new Observable<VolunteerForm[]>();
   adoptionList = new Observable<AdoptionForm[]>();
   adoptionListCollection: AngularFirestoreCollection;
+  volunteerListCollection: AngularFirestoreCollection;
+  volunteerList = new Observable<VolunteerForm[]>();
 
   constructor(
     private afs: AngularFirestore
@@ -48,6 +50,16 @@ export class FormService {
       return changes.map(a => {
         const data = a.payload.doc.data() as AdoptionForm;
         data.idForm = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.volunteerListCollection = this.afs.collection('volunteer-forms', ref => {
+      return ref.where('accepted', '==', true);
+    });
+    this.volunteerForms = this.volunteerListCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as VolunteerForm;
+        data.id = a.payload.doc.id;
         return data;
       });
     }));
@@ -123,5 +135,30 @@ export class FormService {
     }
   }
 
+  getUserVolunteerForms(userUid: string): Observable<VolunteerForm[]> {
+    const userVolunteerForms: AngularFirestoreCollection = this.afs.collection('volunteer-forms', ref => {
+      return ref.where('uidUser', '==', userUid).where('wantJob', '==', true);
+    });
+    return userVolunteerForms.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as VolunteerForm;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+
+  clearUserVolunteerForms(form: VolunteerForm): Promise<void>{
+    const formRef: AngularFirestoreDocument<VolunteerForm> = this.afs.doc(`volunteer-forms/${form.id}`);
+    if (form.accepted){
+      const acceptedForm: VolunteerForm = {
+        ...form,
+        wantJob: false
+      };
+      return formRef.set(acceptedForm, {merge : true});
+    } else {
+      return formRef.delete();
+    }
+  }
 }
 
