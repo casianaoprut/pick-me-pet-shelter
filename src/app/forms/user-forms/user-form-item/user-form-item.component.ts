@@ -15,8 +15,7 @@ import {Pet} from '../../../shared/pet.model';
 export class UserFormItemComponent implements OnInit, OnDestroy {
 
   subscription = new Subscription();
-  adoptedPet: Pet | null = null;
-  age = 0;
+  adoptedPet: Pet = {} as Pet;
   @Input() adoptionForm!: AdoptionForm;
 
   constructor(
@@ -31,7 +30,6 @@ export class UserFormItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.petService.getPet(this.adoptionForm.petId).subscribe( pet => {
       this.adoptedPet = pet;
-      this.age = this.petService.getAgeInYears(pet);
     });
   }
 
@@ -39,5 +37,13 @@ export class UserFormItemComponent implements OnInit, OnDestroy {
     if (this.adoptionForm.accepted || this.adoptionForm.rejected){
       this.formService.clearUserAdoptionForm(this.adoptionForm);
     }
+  }
+
+  getAgeInYears(): number{
+    return this.petService.getAgeInYears(this.adoptedPet);
+  }
+
+  getAgeInMonths(): number{
+    return this.petService.getAgeInMonths(this.adoptedPet);
   }
 }
