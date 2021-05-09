@@ -6,13 +6,14 @@
   subheader="Adoption form"
   styleClass="p-card-shadow">
   <ng-template pTemplate="header" >
-    <img
-      *ngIf="pet !== null"
-      [src]="pet.photoURL"
-      class="img-rounded"
-      style="max-height: 250px; max-width: 500px;"
-      [alt]="pet.name"
-    >
+    <div class="photoDiv">
+      <img
+        *ngIf="pet !== null"
+        [src]="pet.photoURL"
+        class="img-rounded photo center-block"
+        [alt]="pet.name"
+      >
+    </div>
   </ng-template>
   <h5> I {{adoptionForm.otherPets === 'Yes' ? 'have' : 'don\'t have'}} other pets.</h5>
   <h5> Description: {{adoptionForm.adoptionDescription}}</h5>
