@@ -8,7 +8,6 @@ describe('Auth test', () => {
   })
 
   it('Testing login error message', () => {
-
     cy.get('input[name = email]').clear().type('email@fake.com');
     cy.get('p-password[name = password]').clear().type('invalid');
     cy.get('input[name = email]').click();
@@ -37,6 +36,8 @@ describe('Auth test', () => {
   it('Testing logout',() => {
     cy.get('a.dropdown-toggle').click();
     cy.get('ul').find('>li').eq(5).click();
+    cy.wait(1000);
+    cy.get('li#Login').should('exist').and('be.visible');
   });
 
   it('Testing login',() => {
