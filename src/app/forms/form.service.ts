@@ -14,7 +14,7 @@ export class FormService {
   pendingAdoptionFormsCollection: AngularFirestoreCollection;
   adoptionForms = new Observable<AdoptionForm[]>();
   pendingVolunteerFormsCollection: AngularFirestoreCollection;
-  volunteerForms = new Observable<VolunteerForm[]>();
+  pendingVolunteerForms = new Observable<VolunteerForm[]>();
   adoptionList = new Observable<AdoptionForm[]>();
   adoptionListCollection: AngularFirestoreCollection;
   volunteerListCollection: AngularFirestoreCollection;
@@ -36,7 +36,7 @@ export class FormService {
     this.pendingVolunteerFormsCollection = this.afs.collection('volunteer-forms', ref => {
       return ref.where('accepted', '==', false).where('rejected', '==', false);
     });
-    this.volunteerForms = this.pendingVolunteerFormsCollection.snapshotChanges().pipe(map(changes => {
+    this.pendingVolunteerForms = this.pendingVolunteerFormsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as VolunteerForm;
         data.id = a.payload.doc.id;
@@ -56,7 +56,7 @@ export class FormService {
     this.volunteerListCollection = this.afs.collection('volunteer-forms', ref => {
       return ref.where('accepted', '==', true);
     });
-    this.volunteerForms = this.volunteerListCollection.snapshotChanges().pipe(map(changes => {
+    this.volunteerList = this.volunteerListCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as VolunteerForm;
         data.id = a.payload.doc.id;
