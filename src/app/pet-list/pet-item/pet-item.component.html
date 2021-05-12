@@ -7,6 +7,7 @@
 <div *ngIf="showEditPetMode" style="display: inline-block">
   <app-pet-edit
     [pet]="pet"
+    [editMode]="true"
     (closePetEdit)="onHandleEditPetMode()"
   ></app-pet-edit>
 </div>

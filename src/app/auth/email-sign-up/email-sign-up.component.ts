@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {MyMessageService} from '../../shared/my-message.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-email-sign-up',
@@ -15,6 +16,8 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
   showUploader = false;
   photoURL = 'https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/user.png?alt=media&token=087556eb-24fe-4e08-8d35-a59c24f99cbf';
   photoPath = '';
+  storageSubscription = new Subscription();
+  urlSubscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -69,19 +72,19 @@ export class EmailSignUpComponent implements OnInit, OnDestroy {
     }
     const file = event.files[0] as File;
     const path = `userPhoto/${file.name}_${Date.now()}`;
-    this.storage.upload(path, file)
+    this.storageSubscription = this.storage.upload(path, file)
       .snapshotChanges()
       .subscribe( (result) => {
           if (result?.state === 'success') {
-            this.storage.ref(path)
+            this.urlSubscription = this.storage.ref(path)
               .getDownloadURL()
               .subscribe(rez => {
                 this.photoURL = rez;
                 this.photoPath = path;
                 this.onHandleUploader();
-              }).unsubscribe();
+              });
           }
         }
-      ).unsubscribe();
+      );
   }
 }

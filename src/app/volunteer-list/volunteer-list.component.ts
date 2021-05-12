@@ -18,7 +18,7 @@ export class VolunteerListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.formService.volunteerForms.subscribe( result => {
+    this.subscription = this.formService.volunteerList.subscribe(result => {
       this.quittersList = result.filter( form => !form.wantJob);
       this.volunteerList = result.filter( form => form.wantJob);
     });

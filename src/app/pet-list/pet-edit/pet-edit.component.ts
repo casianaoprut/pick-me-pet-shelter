@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {PetService} from '../pet.service';
 
@@ -8,15 +8,17 @@ import {AngularFireStorage} from '@angular/fire/storage';
 
 import {Pet} from '../../shared/pet.model';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-pet-edit',
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.css']
 })
-export class PetEditComponent implements OnInit {
+export class PetEditComponent implements OnInit, OnDestroy {
 
   @Output() closePetEdit = new EventEmitter<void>();
+  @Input() editMode = false;
   @Input() pet: Pet = {
     name: '',
     breed: '',
@@ -33,12 +35,19 @@ export class PetEditComponent implements OnInit {
   showUploader = false;
   photoURL = '';
   photoPath = '';
+  storageSubscription = new Subscription();
+  urlSubscription = new Subscription();
 
   constructor(
     private router: Router,
     private petService: PetService,
     private storage: AngularFireStorage
   ) { }
+
+  ngOnDestroy(): void {
+    this.urlSubscription.unsubscribe();
+    this.storageSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     if (this.pet.name !== ''){
@@ -68,27 +77,28 @@ export class PetEditComponent implements OnInit {
     }
     const file = event.files[0] as File;
     const path = `pets/${file.name}_${Date.now()}`;
-    this.storage.upload(path, file)
+    console.log(path);
+    this.storageSubscription = this.storage.upload(path, file)
       .snapshotChanges()
       .subscribe( (result) => {
-          if (result?.state === 'success') {
-            this.storage.ref(path)
-              .getDownloadURL()
-              .subscribe(rez => {
-                this.photoURL = rez;
-                this.photoPath = path;
-                this.onHandleUploader();
-              }).unsubscribe();
+        if (result?.state === 'success') {
+          this.urlSubscription = this.storage.ref(path)
+            .getDownloadURL()
+            .subscribe(rez => {
+              this.photoURL = rez;
+              this.photoPath = path;
+              this.onHandleUploader();
+            });
           }
         }
-      ).unsubscribe();
+      );
   }
 
   onSubmit(form: NgForm): void{
-    if (this.pet.photoURL !== ''){
+    if (this.editMode){
       this.onEditPet();
     } else {
-      this.onSubmitPet();
+      this.onCreatePet();
     }
     form.reset();
   }
@@ -114,7 +124,7 @@ export class PetEditComponent implements OnInit {
     });
   }
 
-  onSubmitPet(): void{
+  onCreatePet(): void{
     const birthDate = this.petBirthDate ? this.petBirthDate : new Date();
     const pet = {
       ...this.pet,

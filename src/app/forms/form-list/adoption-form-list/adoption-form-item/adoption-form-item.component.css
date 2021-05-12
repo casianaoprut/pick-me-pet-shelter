@@ -1,0 +1,17 @@
+.photo{
+  max-height: 260px;
+  width: auto;
+}
+
+.photoDiv{
+  width: 500px;
+}
+
+@media screen and (max-width: 550px){
+  .photoDiv {
+    width: 310px;
+  }
+  .photo {
+    max-width: 310px;
+  }
+}

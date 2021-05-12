@@ -21,7 +21,7 @@ export class VolunteerFormListComponent implements OnInit, OnDestroy{
     }
 
   ngOnInit(): void {
-    this.subscription = this.formService.volunteerForms.subscribe(volunteerForms => {
+    this.subscription = this.formService.pendingVolunteerForms.subscribe(volunteerForms => {
       this.volunteerForms = volunteerForms;
     });
 

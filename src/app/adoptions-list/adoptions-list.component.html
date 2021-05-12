@@ -1,6 +1,9 @@
 <h2 style="text-align: center"> - Adoptions List - </h2>
-<div
-  *ngFor="let adoption of adoptionList"
-  style="display: inline-block; margin: 10px; max-width: 500px; text-align: left">
-  <app-adoption-form-item [adoptionForm]="adoption" [adminView]="false"></app-adoption-form-item>
+<div class="center-block">
+  <div
+    *ngFor="let adoption of adoptionList"
+    style="display: inline-block; margin: 10px; max-width: 500px">
+    <app-adoption-form-item [adoptionForm]="adoption" [adminView]="false"></app-adoption-form-item>
+  </div>
 </div>
+

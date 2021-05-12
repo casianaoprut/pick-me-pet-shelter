@@ -12,7 +12,6 @@ export class MyMessageService {
   constructor() { }
 
   addMessage(message: Message): void{
-    console.log(message);
     this.msg.next(message);
   }
 

@@ -40,10 +40,16 @@ export class UserFormItemComponent implements OnInit, OnDestroy {
   }
 
   getAgeInYears(): number{
-    return this.petService.getAgeInYears(this.adoptedPet);
+    if (this.adoptedPet.birthDate !== undefined) {
+      return this.petService.getAgeInYears(this.adoptedPet);
+    }
+    return -1;
   }
 
   getAgeInMonths(): number{
-    return this.petService.getAgeInMonths(this.adoptedPet);
+    if (this.adoptedPet.birthDate !== undefined) {
+      return this.petService.getAgeInMonths(this.adoptedPet);
+    }
+    return -1;
   }
 }

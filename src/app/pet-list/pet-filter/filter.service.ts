@@ -17,7 +17,7 @@ export class FilterService {
       if (name === '') {
         return true;
       }
-      return pet.name === name;
+      return pet.name.includes(name);
     };
   }
 
