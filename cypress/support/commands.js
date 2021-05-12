@@ -12,10 +12,6 @@ const firebaseConfig ={
 
 firebase.initializeApp(firebaseConfig);
 
-
-
-
-
 Cypress.Commands.add('findPet', (name) => {
   cy.get('button').contains('Open Filters').click();
   cy.get('input').eq(0).clear().type(name);
@@ -23,11 +19,20 @@ Cypress.Commands.add('findPet', (name) => {
 });
 
 Cypress.Commands.add('login', (email, password) => {
-  return firebase.default.auth().signInWithEmailAndPassword(email,password).then(() => {
-    console.log('It worked!');
-  });
+  return firebase.default.auth().signInWithEmailAndPassword(email,password).then(() => {});
 });
 
 Cypress.Commands.add('logout', () => {
   return firebase.auth().signOut();
 })
+
+const adoptionForm = require('../fixtures/adoptionForm.json')
+
+Cypress.Commands.add('fillAdoptionForm', () => {
+  cy.get('input#firstname').type(adoptionForm.firstname);
+  cy.get('input#lastname').type(adoptionForm.lastname);
+  cy.get('input#address').type(adoptionForm.address);
+  cy.get("div.p-radiobutton-box").eq(0).click();
+  cy.get('textarea').type(adoptionForm.description);
+  cy.get('button').contains('Adopt Me!').click();
+});

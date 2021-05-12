@@ -24,7 +24,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!user" routerLinkActive="active">
+        <li *ngIf="!user" routerLinkActive="active" id="Login">
           <a routerLink="/auth" style="cursor: pointer"><p class="manage">Login</a>
         </li>
         <li class="dropdown" appDropdown *ngIf="user">

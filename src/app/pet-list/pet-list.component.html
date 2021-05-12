@@ -3,41 +3,43 @@
     (closePetEdit)="onHandleAddPet()"
   ></app-pet-edit>
 </div>
-<div class="row">
-  <div class="col-lg-0 col-md-0">
-    <app-pet-filter (filtersChanged)="filterPets($event)"></app-pet-filter>
-  </div>
-  <div class="col-xs-12 col-md-12 col-lg-12" style="display: inline-block">
-    <div *ngIf="user && user.roles.admin">
-      <button
-        *ngIf="editMode"
-        pButton
-        pRipple
-        icon="pi pi-plus"
-        type="button"
-        label="New Pet"
-        style="font-size: 13px; width: 80px; margin-right: 5px"
-        class="p-button-rounded p-button-info"
-        (click)="onHandleAddPet()"
-      ></button>
-      <button
-        pButton
-        pRipple
-        type="button"
-        label="{{editMode? 'Cancel' : 'Edit Mode'}}"
-        style="font-size: 13px; width: 80px"
-        class="p-button-rounded p-button-danger"
-        (click)="onHandleEditMode()"
-      ></button>
-      <hr>
+<div style="text-align: center">
+  <div>
+    <div style="text-align: left">
+      <app-pet-filter (filtersChanged)="filterPets($event)"></app-pet-filter>
     </div>
-    <div style="text-align: center">
-    <app-pet-item
-      *ngFor="let petElement of filteredPetList"
-      [pet]="petElement"
-      [editMode]="editMode"
-      style="text-align: left">
-    </app-pet-item>
+    <div class="col-xs-12 col-md-12 col-lg-12" style="display: inline-block;">
+      <div *ngIf="user && user.roles.admin" style="text-align: left">
+        <button
+          *ngIf="editMode"
+          pButton
+          pRipple
+          icon="pi pi-plus"
+          type="button"
+          label="New Pet"
+          style="font-size: 13px; width: 80px; margin-right: 5px"
+          class="p-button-rounded p-button-info"
+          (click)="onHandleAddPet()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="{{editMode? 'Cancel' : 'Edit Mode'}}"
+          style="font-size: 13px; width: 80px"
+          class="p-button-rounded p-button-danger"
+          (click)="onHandleEditMode()"
+        ></button>
+        <hr>
+      </div>
+      <div class="center-block">
+        <app-pet-item
+          *ngFor="let petElement of filteredPetList"
+          [pet]="petElement"
+          [editMode]="editMode"
+          style="text-align: left">
+        </app-pet-item>
+      </div>
+    </div>
   </div>
-</div>
 </div>

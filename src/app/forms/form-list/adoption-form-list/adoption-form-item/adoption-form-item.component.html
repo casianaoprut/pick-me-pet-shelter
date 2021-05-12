@@ -23,6 +23,7 @@
     <div *ngIf="adminView" style="text-align: center">
       <p-button
         label="Accept"
+        [id] = "adoptionForm.firstname + '_' + adoptionForm.lastname "
         icon="pi pi-check"
         styleClass="p-button-secondary"
         [style]="{fontSize: '13px'}"
@@ -30,6 +31,7 @@
       ></p-button>
       <p-button
         label="Reject"
+        [id] = "adoptionForm.firstname + '_' + adoptionForm.lastname "
         icon="pi pi-times"
         [style]="{marginLeft: '.5em', fontSize: '13px'}"
         (click)="onReject()"

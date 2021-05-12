@@ -6,6 +6,7 @@
     </ng-template>
     <ng-template pTemplate="icons">
       <button
+        id="clear"
         *ngIf="adoptionForm.accepted === true || adoptionForm.rejected === true"
         (click)="onClear()"
         pButton

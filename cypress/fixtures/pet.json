@@ -1,0 +1,18 @@
+{
+  "name": "Cleo",
+  "breed": "dog",
+  "description": "Very playful and energetic! Loves to sleep, to stay outside and sometimes to sleep outside.",
+  "photoURL": "https://firebasestorage.googleapis.com/v0/b/pick-me--pet-shelter.appspot.com/o/pets%2FCleo.jpg_1620601607960?alt=media&token=f15527ec-839c-4100-9a60-2d6dfcd8bdf6",
+  "addedDate":  {
+    "seconds": 1620130076,
+    "nanoseconds": 84000000
+  },
+  "birthDate": {
+    "seconds": 1508360400,
+    "nanoseconds": 0
+  },
+  "gender": "female",
+  "id": "ejNxNXbZ6QuKsQ1Jjbo5",
+  "photoPath": "pets/Cleo.jpg_1620601607960",
+  "adopted": "true"
+}
