@@ -20,7 +20,7 @@ export class DonationFormComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm): void {
   form.reset();
   this.messageService.clear();
-  this.messageService.add({severity: 'success', summary: 'Thank you!', detail: 'You make a pet happy!'});
+  this.messageService.add({severity: 'success', summary: 'Thank you!', detail: 'You made a pet happy!'});
 }
 
   ngOnDestroy(): void {
