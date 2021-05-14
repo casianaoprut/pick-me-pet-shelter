@@ -9,7 +9,7 @@ describe("Donation form tests", () => {
   });
 
   it('Testing the auth guard', () => {
-    cy.url().should("contain", "/auth");
+    cy.url().should("contain", "/auth?returnUrl=%2Fforms%2Fdonation");
     cy.get('p-messages').should('be.visible');
     cy.get('input[name = email]').clear().type(email);
     cy.get('p-password[name = password]').clear().type(password);

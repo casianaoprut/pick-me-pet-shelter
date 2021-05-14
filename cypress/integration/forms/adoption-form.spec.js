@@ -12,7 +12,7 @@ describe("adoption-form testing",() => {
   });
 
   it("Testing the auth guard", () => {
-    cy.url().should("contain", "/auth");
+    cy.url().should("contain", "/auth?returnUrl=%2Fforms%2Fadoption");
     cy.login(email,password).then(cy.reload);
   });
 
@@ -22,30 +22,30 @@ describe("adoption-form testing",() => {
 
   it("Testing the submission of the form", () => {
     cy.fillAdoptionForm();
-    cy.url().should("contain", "/my-forms");
+    cy.url().should("contain", "/list/my-forms");
     cy.wait(1500);
     cy.get("p-panel").contains(pet.name).should("exist").and("be.visible");
     cy.get("span.p-tag-value").contains("Pending").should("exist");
   });
 
   it("Testing the acceptance of the form", () => {
-    cy.visit("/manage-forms");
+    cy.visit("/forms/manage-forms");
     cy.get("p-button[id = Test1_Test]").contains("Accept").should("exist");
     cy.get("p-button[id = Test1_Test]").contains("Accept").click();
     cy.wait(1000);
-    cy.visit("/my-forms");
+    cy.visit("/list/my-forms");
     cy.get("p-panel").contains(pet.name).should("exist").and("be.visible");
     cy.get('span.p-tag-value').contains('Accepted').should('exist');
   });
 
   it("Testing the adoption list", () => {
-    cy.visit("/adoptions-list");
+    cy.visit("/list/adoptions");
     cy.wait(500);
     cy.get("div.p-card-title").contains(adoptionForm.firstname + ' ' + adoptionForm.lastname);
   });
 
   it("Testing deleting a form", () => {
-    cy.visit('/my-forms')
+    cy.visit('/list/my-forms')
     cy.get("button[id = clear]").should("exist");
     cy.get("button[id = clear]").click();
     cy.wait(500);
@@ -55,11 +55,11 @@ describe("adoption-form testing",() => {
   it('Testing the rejection of the form', () => {
     cy.fillAdoptionForm();
     cy.wait(1000);
-    cy.visit('/manage-forms');
+    cy.visit('/forms/manage-forms');
     cy.get('p-button[id = Test1_Test]').contains('Reject').should('exist');
     cy.get('p-button[id = Test1_Test]').contains('Reject').click();
     cy.wait(1000);
-    cy.visit('/my-forms');
+    cy.visit('/list/my-forms');
     cy.wait(500);
     cy.get('p-panel').contains(pet.name).should('exist').and('be.visible');
     cy.get('span.p-tag-value').contains('Rejected').should('exist');

@@ -4,13 +4,13 @@ describe("Volunteer form tests",() => {
   const {email, password} = authUser;
   const volunteerForms = require("../../fixtures/volunteerForm.json");
 
-  beforeEach("Going to donation-form", () => {
+  beforeEach("Going to volunteer-form", () => {
     cy.visit("/forms/volunteer");
     cy.wait(1500);
   });
 
   it('Testing the auth guard', () => {
-    cy.url().should("contain", "/auth?returnUrl=forms%2Fvolunteer");
+    cy.url().should("contain", "/auth?returnUrl=%2Fforms%2Fvolunteer");
     cy.get('p-messages').should('be.visible');
     cy.get('input[name = email]').clear().type(email);
     cy.get('p-password[name = password]').clear().type(password);
@@ -23,7 +23,7 @@ describe("Volunteer form tests",() => {
   it("Testing the submission of the form", () => {
     cy.fillVolunteerForm();
     cy.wait(1000);
-    cy.visit('/my-forms');
+    cy.visit('/list/my-forms');
     cy.wait(1000);
     cy.get('div#mat-tab-label-0-1').click();
     cy.get("p-panel").contains(volunteerForms.firstname + ' ' + volunteerForms.lastname).should("exist").and("be.visible");
@@ -31,12 +31,12 @@ describe("Volunteer form tests",() => {
   });
 
   it("Testing the acceptance of the form", () => {
-    cy.visit("/manage-forms");
+    cy.visit("/forms/manage-forms");
     cy.get('div#mat-tab-label-0-1').click();
     cy.get("button#Pavel_Smith").contains("Accept").should("exist");
     cy.get("button#Pavel_Smith").contains("Accept").click();
     cy.wait(1000);
-    cy.visit("/my-forms");
+    cy.visit("/list/my-forms");
     cy.get('div#mat-tab-label-0-1').click();
     cy.get("p-panel").contains(volunteerForms.firstname + ' ' + volunteerForms.lastname).should("exist").and("be.visible");
     cy.get('span.p-tag-value').contains('Accepted').should('exist');
@@ -49,7 +49,7 @@ describe("Volunteer form tests",() => {
   });
 
   it("Testing the quit feature", () => {
-    cy.visit("/my-forms");
+    cy.visit("/list/my-forms");
     cy.wait(1000);
     cy.get('div#mat-tab-label-0-1').click();
     cy.wait(1000);
@@ -72,13 +72,13 @@ describe("Volunteer form tests",() => {
   it("Testing the rejection of the form", () => {
     cy.fillVolunteerForm();
     cy.wait(500);
-    cy.visit('/manage-forms');
+    cy.visit('/forms/manage-forms');
     cy.wait(1000);
     cy.get('div#mat-tab-label-0-1').click();
     cy.get("button#Pavel_Smith").contains("Reject").should("exist");
     cy.get("button#Pavel_Smith").contains("Reject").click();
     cy.wait(1000);
-    cy.visit("/my-forms");
+    cy.visit("/list/my-forms");
     cy.get('div#mat-tab-label-0-1').click();
     cy.wait(500);
     cy.get("p-panel").contains(volunteerForms.firstname + ' ' + volunteerForms.lastname).should("exist").and("be.visible");
@@ -86,7 +86,7 @@ describe("Volunteer form tests",() => {
   });
 
   it("Testing deleting a form", () => {
-    cy.visit('/my-forms')
+    cy.visit('/list/my-forms')
     cy.wait(1000);
     cy.get('div#mat-tab-label-0-1').click();
     cy.get("button#clear").should("exist");
