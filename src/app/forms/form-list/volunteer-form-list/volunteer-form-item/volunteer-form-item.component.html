@@ -7,6 +7,7 @@
     <ng-template pTemplate="icons">
       <div *ngIf="!adminView">
         <button style="margin-right: 5px; font-size: 13px"
+                [id]="volunteerForm.firstName + '_' + volunteerForm.lastName"
                 (click)="onAccept()"
                 pButton
                 pRipple
@@ -15,6 +16,7 @@
                 label="Accept"
                 class="p-button-rounded p-button-success"></button>
         <button
+          [id]="volunteerForm.firstName + '_' + volunteerForm.lastName"
           (click)="onReject()"
           pButton
           pRipple
@@ -26,6 +28,7 @@
       </div>
       <div *ngIf="adminView">
         <button
+          [id]="volunteerForm.firstName + '_' + volunteerForm.lastName"
           *ngIf="volunteerForm.wantJob === false"
           (click)="onClear()"
           pButton

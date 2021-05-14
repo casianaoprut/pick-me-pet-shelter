@@ -6,6 +6,7 @@
     </ng-template>
     <ng-template pTemplate="icons">
       <button
+        id="clear"
         *ngIf="volunteerForm.rejected === true"
         (click)="onClear()"
         pButton
@@ -14,6 +15,7 @@
         icon="pi pi-times"
         class="p-button-rounded p-button-plain p-button-text"></button>
       <p-tag
+        id="quit"
         *ngIf="volunteerForm.accepted === true"
         [style]="{fontSize: '12px', cursor: 'pointer', width: '50px'}"
         (click)="onClear()"
