@@ -23,6 +23,7 @@ import {environment} from '../environments/environment';
 
 import {MessageService} from 'primeng/api';
 import {SharedModule} from './shared/shared.module';
+import {PetListModule} from './pet-list/pet-list.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {SharedModule} from './shared/shared.module';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCqrIMrOL182Wcr_d8iACvuFeIT2pK4_U0'
     }),
-    SharedModule
+    SharedModule,
+    PetListModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

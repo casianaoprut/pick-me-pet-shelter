@@ -11,8 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)},
   {path: 'forms',
     loadChildren: () => import('./forms/my-forms.module').then(module => module.MyFormsModule)},
-  {path: 'pets',
-    loadChildren: () => import('./pet-list/pet-list.module').then(module => module.PetListModule)},
   {path: 'list',
     loadChildren: () => import('./lists/lists.module').then(module => module.ListsModule)},
 

@@ -43,7 +43,7 @@ describe("Volunteer form tests",() => {
   });
 
   it("Testing the volunteer list", () => {
-    cy.visit("/volunteer-list");
+    cy.visit("/list/volunteers");
     cy.wait(500);
     cy.get("div.p-panel-header").contains(volunteerForms.firstname + ' ' +volunteerForms.lastname).should('exist');
   });
@@ -59,7 +59,7 @@ describe("Volunteer form tests",() => {
   });
 
   it("Testing the quitters feature", () => {
-    cy.visit("/volunteer-list");
+    cy.visit("/list/volunteers");
     cy.wait(500);
     cy.get('div#mat-tab-label-0-1').click();
     cy.wait(500);

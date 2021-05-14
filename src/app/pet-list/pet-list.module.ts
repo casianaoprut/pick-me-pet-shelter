@@ -25,7 +25,7 @@ import {SharedModule} from '../shared/shared.module';
     PrimengModule,
     FormsModule,
     RouterModule.forChild([
-      {path: '', component: PetListComponent},
+      {path: 'pets', component: PetListComponent},
     ]),
     SharedModule
   ],

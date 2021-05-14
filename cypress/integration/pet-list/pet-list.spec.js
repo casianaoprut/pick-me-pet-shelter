@@ -19,12 +19,6 @@ describe('Pet-list tests', () =>{
       });
   });
 
-  it('Testing "Adopt Me" button when logout', () => {
-    cy.get('button').contains('Adopt Me!').eq(0).click();
-    cy.url().should('contain', '/auth?returnUrl=forms%2Fadoption');
-    cy.get('p-messages').should('be.visible');
-  });
-
   it('Testing "Adopt Me" button when login', () => {
     cy.login(email,password).then(cy.reload);
     cy.wait(1500);
