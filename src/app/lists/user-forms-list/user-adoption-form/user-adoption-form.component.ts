@@ -2,17 +2,17 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 
 import {PetService} from '../../../pet-list/pet.service';
-import {FormService} from '../../form.service';
+import {FormService} from '../../../forms/form.service';
 
-import {AdoptionForm} from '../../../shared/adoption-form.model';
-import {Pet} from '../../../shared/pet.model';
+import {AdoptionForm} from '../../../shared/models/adoption-form.model';
+import {Pet} from '../../../shared/models/pet.model';
 
 @Component({
   selector: 'app-user-form-item',
-  templateUrl: './user-form-item.component.html',
-  styleUrls: ['./user-form-item.component.css']
+  templateUrl: './user-adoption-form.component.html',
+  styleUrls: ['./user-adoption-form.component.css']
 })
-export class UserFormItemComponent implements OnInit, OnDestroy {
+export class UserAdoptionFormComponent implements OnInit, OnDestroy {
 
   subscription = new Subscription();
   adoptedPet: Pet = {} as Pet;

@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, Predicate, EventEmitter} from '@angular/core';
 import { FilterService } from './filter.service';
-import {Pet} from '../../shared/pet.model';
+import {Pet} from '../../shared/models/pet.model';
 
 @Component({
   selector: 'app-pet-filter',

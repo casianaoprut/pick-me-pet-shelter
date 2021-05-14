@@ -38,22 +38,22 @@
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li *ngIf="user.roles.admin" routerLinkActive="active">
-              <a style="cursor: pointer" routerLink="/manage-forms">
+              <a style="cursor: pointer" routerLink="/forms/manage-forms">
                 <p class="manage" >Manage Forms</p>
               </a>
             </li>
             <li *ngIf="user.roles.admin" routerLinkActive="active">
-              <a style="cursor: pointer" routerLink="/adoptions-list">
+              <a style="cursor: pointer" routerLink="/list/adoptions">
                 <p class="adoption">Adoptions List</p>
               </a>
             </li>
             <li *ngIf="user.roles.admin" routerLinkActive="active">
-              <a style="cursor: pointer" routerLink="/volunteer-list">
+              <a style="cursor: pointer" routerLink="/list/volunteers">
                 <p class="adoption">Volunteer List</p>
               </a>
             </li>
             <li  routerLinkActive="active">
-              <a style="cursor: pointer" routerLink="/my-forms">
+              <a style="cursor: pointer" routerLink="/list/my-forms">
                 <p class="manage">My forms</p>
               </a>
             </li>

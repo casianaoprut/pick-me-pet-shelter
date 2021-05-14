@@ -3,8 +3,8 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
-import {AdoptionForm} from '../shared/adoption-form.model';
-import {VolunteerForm} from '../shared/volunteer-form.model';
+import {AdoptionForm} from '../shared/models/adoption-form.model';
+import {VolunteerForm} from '../shared/models/volunteer-form.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {VolunteerForm} from '../../../shared/volunteer-form.model';
+import {VolunteerForm} from '../../../shared/models/volunteer-form.model';
 import {Subscription} from 'rxjs';
 import {FormService} from '../../form.service';
 

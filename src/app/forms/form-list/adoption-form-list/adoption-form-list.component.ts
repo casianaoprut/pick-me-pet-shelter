@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs';
 
 import {FormService} from '../../form.service';
 
-import {AdoptionForm} from '../../../shared/adoption-form.model';
+import {AdoptionForm} from '../../../shared/models/adoption-form.model';
 
 @Component({
   selector: 'app-adoption-form-list',

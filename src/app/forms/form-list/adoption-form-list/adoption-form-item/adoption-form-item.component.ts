@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
-import {AdoptionForm} from '../../../../shared/adoption-form.model';
-import {Pet} from '../../../../shared/pet.model';
+import {AdoptionForm} from '../../../../shared/models/adoption-form.model';
+import {Pet} from '../../../../shared/models/pet.model';
 import {PetService} from '../../../../pet-list/pet.service';
 import {Subscription} from 'rxjs';
 import {FormService} from '../../../form.service';

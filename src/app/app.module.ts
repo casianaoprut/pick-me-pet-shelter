@@ -4,75 +4,33 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import {AgmCoreModule} from '@agm/core';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { AppComponent } from './app.component';
-import { GoogleSignInComponent } from './auth/google-sign-in/google-sign-in.component';
-import {environment} from '../environments/environment';
-import { EmailSignUpComponent } from './auth/email-sign-up/email-sign-up.component';
-import {FormsModule} from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
-import { HeaderComponent } from './header/header.component';
-import { PetListComponent } from './pet-list/pet-list.component';
-import { PetEditComponent } from './pet-list/pet-edit/pet-edit.component';
-import { PetItemComponent } from './pet-list/pet-item/pet-item.component';
-import { PetDetailsComponent } from './pet-list/pet-details/pet-details.component';
-import {EmailLogInComponent} from './auth/email-log-in/email-log-in.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AdoptionFormComponent } from './forms/adoption-form/adoption-form.component';
-import { AdoptionFormListComponent } from './forms/form-list/adoption-form-list/adoption-form-list.component';
-import { AdoptionFormItemComponent } from './forms/form-list/adoption-form-list/adoption-form-item/adoption-form-item.component';
-
-import {DropdownDirective} from './shared/dropdown.directive';
-import { VolunteerFormComponent } from './forms/volunteer-form/volunteer-form.component';
-import { FormListComponent } from './forms/form-list/form-list.component';
-
 import {PrimengModule} from './primeng.module';
 import {MaterialModule} from './material.module';
-import { DonationFormComponent } from './forms/donation-form/donation-form.component';
-import {PetFilterComponent} from './pet-list/pet-filter/pet-filter.component';
-import { UserFormsComponent } from './forms/user-forms/user-forms.component';
-import { UserFormItemComponent } from './forms/user-forms/user-form-item/user-form-item.component';
-import {AgmCoreModule} from '@agm/core';
-import { VolunteerFormListComponent } from './forms/form-list/volunteer-form-list/volunteer-form-list.component';
-import { VolunteerFormItemComponent } from './forms/form-list/volunteer-form-list/volunteer-form-item/volunteer-form-item.component';
-import { AdoptionsListComponent } from './adoptions-list/adoptions-list.component';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import {DropdownDirective} from './shared/dropdown.directive';
+import {environment} from '../environments/environment';
+
+
 import {MessageService} from 'primeng/api';
-import {UserVolunteerFormComponent} from './forms/user-forms/user-volunteer-form/user-volunteer-form.component';
-import { VolunteerListComponent } from './volunteer-list/volunteer-list.component';
+import {SharedModule} from './shared/shared.module';
+import {PetListModule} from './pet-list/pet-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GoogleSignInComponent,
-    EmailSignUpComponent,
-    AuthComponent,
     HeaderComponent,
-    DropdownDirective,
-    PetListComponent,
-    PetEditComponent,
-    PetItemComponent,
-    PetDetailsComponent,
     HomePageComponent,
-    EmailLogInComponent,
-    AdoptionFormComponent,
-    EmailLogInComponent,
-    VolunteerFormComponent,
-    DonationFormComponent,
-    FormListComponent,
-    AdoptionFormListComponent,
-    AdoptionFormItemComponent,
-    PetFilterComponent,
-    UserFormsComponent,
-    UserFormItemComponent,
-    VolunteerFormListComponent,
-    VolunteerFormItemComponent,
-    AdoptionsListComponent,
-    UserVolunteerFormComponent,
-    VolunteerListComponent,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
@@ -81,14 +39,15 @@ import { VolunteerListComponent } from './volunteer-list/volunteer-list.componen
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    FormsModule,
     BrowserAnimationsModule,
     PrimengModule,
     MaterialModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCqrIMrOL182Wcr_d8iACvuFeIT2pK4_U0'
-    })
+    }),
+    SharedModule,
+    PetListModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

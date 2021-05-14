@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {Pet} from '../../shared/pet.model';
+import {Pet} from '../../shared/models/pet.model';
 import {PetService} from '../pet.service';
 
 @Component({

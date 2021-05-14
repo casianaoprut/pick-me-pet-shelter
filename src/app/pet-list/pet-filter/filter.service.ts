@@ -1,5 +1,5 @@
 import {Injectable, Predicate} from '@angular/core';
-import {Pet} from '../../shared/pet.model';
+import {Pet} from '../../shared/models/pet.model';
 import {PetService} from '../pet.service';
 
 @Injectable({

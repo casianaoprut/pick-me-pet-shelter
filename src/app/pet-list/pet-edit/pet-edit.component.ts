@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
 import {AngularFireStorage} from '@angular/fire/storage';
 
-import {Pet} from '../../shared/pet.model';
+import {Pet} from '../../shared/models/pet.model';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 

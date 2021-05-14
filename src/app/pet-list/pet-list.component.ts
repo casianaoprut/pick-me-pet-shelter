@@ -4,8 +4,8 @@ import {Subscription} from 'rxjs';
 import {PetService} from './pet.service';
 import {AuthService} from '../auth/auth.service';
 
-import {Pet} from '../shared/pet.model';
-import {User} from '../shared/user.model';
+import {Pet} from '../shared/models/pet.model';
+import {User} from '../shared/models/user.model';
 
 @Component({
   selector: 'app-pet-list',
