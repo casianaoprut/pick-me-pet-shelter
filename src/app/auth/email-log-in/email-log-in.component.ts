@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
-import {User} from '../../shared/user.model';
+import {User} from '../../shared/models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MyMessageService} from '../../shared/my-message.service';
 

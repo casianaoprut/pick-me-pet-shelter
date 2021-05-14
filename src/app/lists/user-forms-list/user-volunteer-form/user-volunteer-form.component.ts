@@ -1,8 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormService} from '../../form.service';
+import {FormService} from '../../../forms/form.service';
 import {Subscription} from 'rxjs';
-import {VolunteerForm} from '../../../shared/volunteer-form.model';
-import {User} from '../../../shared/user.model';
+import {VolunteerForm} from '../../../shared/models/volunteer-form.model';
+import {User} from '../../../shared/models/user.model';
 import {AuthService} from '../../../auth/auth.service';
 
 @Component({

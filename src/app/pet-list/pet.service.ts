@@ -4,7 +4,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import {map} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 
-import {Pet} from '../shared/pet.model';
+import {Pet} from '../shared/models/pet.model';
 import {AngularFireStorage} from '@angular/fire/storage';
 
 

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormService} from '../forms/form.service';
-import {AdoptionForm} from '../shared/adoption-form.model';
+import {FormService} from '../../../forms/form.service';
+import {AdoptionForm} from '../../../shared/models/adoption-form.model';
 import {Subscription} from 'rxjs';
 
 

@@ -2,17 +2,17 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {Subscription} from 'rxjs';
 
-import {User} from '../../shared/user.model';
-import {AdoptionForm} from '../../shared/adoption-form.model';
-import {FormService} from '../form.service';
-import {VolunteerForm} from '../../shared/volunteer-form.model';
+import {User} from '../../shared/models/user.model';
+import {AdoptionForm} from '../../shared/models/adoption-form.model';
+import {FormService} from '../../forms/form.service';
+import {VolunteerForm} from '../../shared/models/volunteer-form.model';
 
 @Component({
   selector: 'app-user-forms',
-  templateUrl: './user-forms.component.html',
-  styleUrls: ['./user-forms.component.css']
+  templateUrl: './user-forms-list.component.html',
+  styleUrls: ['./user-forms-list.component.css']
 })
-export class UserFormsComponent implements OnInit, OnDestroy {
+export class UserFormsListComponent implements OnInit, OnDestroy {
 
   user: User | null = null;
   subscription = new Subscription();

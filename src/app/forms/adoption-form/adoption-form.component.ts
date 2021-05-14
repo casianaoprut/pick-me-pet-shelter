@@ -6,9 +6,9 @@ import {Subscription} from 'rxjs';
 import {FormService} from '../form.service';
 import {AuthService} from '../../auth/auth.service';
 
-import {Pet} from '../../shared/pet.model';
-import {AdoptionForm} from '../../shared/adoption-form.model';
-import {User} from '../../shared/user.model';
+import {Pet} from '../../shared/models/pet.model';
+import {AdoptionForm} from '../../shared/models/adoption-form.model';
+import {User} from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-adoption-form',
@@ -65,7 +65,7 @@ export class AdoptionFormComponent implements OnInit, OnDestroy {
       };
       this.formService.submitAdoptionForm(adoptionForm);
       form.reset();
-      this.router.navigate(['/my-forms']);
+      this.router.navigate(['/list/my-forms']);
     }
   }
 }

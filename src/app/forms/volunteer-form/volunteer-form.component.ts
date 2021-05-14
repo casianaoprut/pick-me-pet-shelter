@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
-import {User} from '../../shared/user.model';
+import {User} from '../../shared/models/user.model';
 import {Subscription} from 'rxjs';
-import {VolunteerForm} from '../../shared/volunteer-form.model';
+import {VolunteerForm} from '../../shared/models/volunteer-form.model';
 import {FormService} from '../form.service';
 
 @Component({

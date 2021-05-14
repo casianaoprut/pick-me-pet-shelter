@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs';
 
 import {PetService} from '../pet-list/pet.service';
 
-import {Pet} from '../shared/pet.model';
+import {Pet} from '../shared/models/pet.model';
 
 @Component({
   selector: 'app-home-page',
