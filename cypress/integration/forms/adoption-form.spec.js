@@ -47,7 +47,6 @@ describe("adoption-form testing",() => {
   it("Testing deleting a form", () => {
     cy.visit('/my-forms')
     cy.get("button[id = clear]").should("exist");
-    cy.wait(1000);
     cy.get("button[id = clear]").click();
     cy.wait(500);
     cy.get('p-panel').should('not.exist');

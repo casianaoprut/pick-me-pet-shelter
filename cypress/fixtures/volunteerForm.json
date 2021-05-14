@@ -1,0 +1,11 @@
+{
+  "firstname": "Pavel",
+  "lastname": "Smith",
+  "phoneNumber": "0730481852",
+  "address": {
+    "street": "Florilor, 53",
+    "city": "Timisoara",
+    "state": "Timis"
+  },
+  "description": "testTest"
+}
