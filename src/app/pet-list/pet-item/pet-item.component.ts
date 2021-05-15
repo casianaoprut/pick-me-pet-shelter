@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 
 import {Pet} from '../../shared/models/pet.model';
 import {PetService} from '../pet.service';
+import {Subscription} from 'rxjs';
+import {FormService} from '../../forms/form.service';
 
 @Component({
   selector: 'app-pet-item',
@@ -16,10 +18,12 @@ export class PetItemComponent implements OnInit {
   showEditPetMode = false;
   @Input()
   pet!: Pet;
+  subscription = new Subscription();
 
   constructor(
     private router: Router,
-    private petService: PetService
+    private petService: PetService,
+    private formService: FormService
   ) { }
 
   ngOnInit(): void{
@@ -36,6 +40,13 @@ export class PetItemComponent implements OnInit {
 
   onDelete(): void{
     this.petService.deletePet(this.pet);
+    if (this.pet.id) {
+      this.subscription = this.formService.getAllAdoptionFormsForPet(this.pet.id).subscribe(adoptionForms => {
+        adoptionForms.map(form => {
+          this.formService.rejectAdoptionForm(form);
+        });
+      });
+    }
   }
 
   onHandleEditPetMode(): void{
