@@ -160,5 +160,18 @@ export class FormService {
       return formRef.delete();
     }
   }
+
+  getAllAdoptionFormsForPet(uid: string): Observable<AdoptionForm[]>{
+    const petsAdoptionForms: AngularFirestoreCollection = this.afs.collection('adoption-forms', ref => {
+      return ref.where('petId', '==', uid);
+    });
+    return petsAdoptionForms.snapshotChanges().pipe(map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as AdoptionForm;
+        data.idForm = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
 }
 

@@ -1,8 +1,11 @@
-<div *ngIf="adoptedPet" style="margin-top: 10px">
+<div style="margin-top: 10px">
   <p-panel styleClass="p-shadow-6" [style]="{margin: '5px'}" [toggleable]="true">
-    <ng-template pTemplate="header">
-      <h1 style="display: inline-block"><b>{{adoptedPet.name}}, {{adoptedPet.breed}}</b></h1>
 
+    <ng-template pTemplate="header">
+      <h1 style="display: inline-block"><b>{{adoptedPet.name === undefined?
+          'This pet was deleted form our database, for more details contact the administrator' :
+          adoptedPet.name + ', ' + adoptedPet.breed
+        }}</b></h1>
     </ng-template>
     <ng-template pTemplate="icons">
       <button
@@ -38,16 +41,18 @@
         [rounded]="true">
       </p-tag>
     </ng-template>
-    <img
-      [src]="adoptedPet.photoURL"
-      class="img-responsive "
-      style="max-height: 100px; max-width: 100%; display: inline-block; margin-right: 20px;"
-      [alt]="adoptedPet.name"
-    >
-    <div style="display: inline-block">
-      <h5>Pet gender: {{adoptedPet.gender}}.</h5>
-      <h5>Pet age: {{getAgeInYears() > 0 ? getAgeInYears() + ' years' : getAgeInMonths() + ' months'}}</h5>
-      <h5>Pet description: {{adoptedPet.description}}</h5>
+    <div *ngIf="adoptedPet.name !== undefined">
+      <img
+        [src]="adoptedPet.photoURL"
+        class="img-responsive "
+        style="max-height: 100px; max-width: 100%; display: inline-block; margin-right: 20px;"
+        [alt]="adoptedPet.name"
+      >
+      <div style="display: inline-block">
+        <h5>Pet gender: {{adoptedPet.gender}}.</h5>
+        <h5>Pet age: {{getAgeInYears() > 0 ? getAgeInYears() + ' years' : getAgeInMonths() + ' months'}}</h5>
+        <h5>Pet description: {{adoptedPet.description}}</h5>
+      </div>
     </div>
   </p-panel>
 </div>

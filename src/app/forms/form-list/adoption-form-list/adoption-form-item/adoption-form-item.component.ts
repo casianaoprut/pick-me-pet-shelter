@@ -16,6 +16,7 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
   showDetails = false;
   pet: Pet | null = null;
   subscription = new Subscription();
+  petFormsSubscription = new Subscription();
   @Input() adoptionForm!: AdoptionForm;
   @Input() adminView = true;
 
@@ -35,6 +36,7 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.petFormsSubscription.unsubscribe();
   }
 
   onHandleDetails(): void{
@@ -42,11 +44,18 @@ export class AdoptionFormItemComponent implements OnInit, OnDestroy {
   }
 
   onAccept(): void {
-    this.formService.acceptAdoptionForm(this.adoptionForm).then(() => {
-      if (this.pet){
-        this.petService.adoptPet(this.pet);
-      }
-    });
+    if (this.pet && this.pet.id) {
+      this.petFormsSubscription = this.formService.getAllAdoptionFormsForPet(this.pet.id).subscribe(adoptionForms => {
+        adoptionForms.map(form => {
+          this.formService.rejectAdoptionForm(form);
+        });
+        this.formService.acceptAdoptionForm(this.adoptionForm).then(() => {
+          if (this.pet){
+            this.petService.adoptPet(this.pet);
+          }
+        });
+      });
+    }
   }
 
   onReject(): void{
