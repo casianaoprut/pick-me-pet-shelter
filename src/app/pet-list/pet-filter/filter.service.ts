@@ -17,7 +17,7 @@ export class FilterService {
       if (name === '') {
         return true;
       }
-      return pet.name.includes(name);
+      return pet.name.toLowerCase().includes(name.toLowerCase());
     };
   }
 
