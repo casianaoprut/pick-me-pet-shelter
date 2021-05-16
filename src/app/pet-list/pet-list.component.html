@@ -32,7 +32,15 @@
         ></button>
         <hr>
       </div>
-      <div class="center-block">
+      <div *ngIf="!petsLoaded" >
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+        <p-skeleton [style]="{display: 'inline-block', margin: '5px'}" height="310px" width="300px"></p-skeleton>
+      </div>
+      <div *ngIf="petsLoaded" class="center-block">
         <app-pet-item
           *ngFor="let petElement of filteredPetList"
           [pet]="petElement"
