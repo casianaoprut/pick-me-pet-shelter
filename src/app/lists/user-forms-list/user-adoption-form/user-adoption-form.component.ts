@@ -17,6 +17,7 @@ export class UserAdoptionFormComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   adoptedPet: Pet = {} as Pet;
   @Input() adoptionForm!: AdoptionForm;
+  formLoaded = false;
 
   constructor(
     private petService: PetService,
@@ -29,6 +30,7 @@ export class UserAdoptionFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.petService.getPet(this.adoptionForm.petId).subscribe( pet => {
+      this.formLoaded = true;
       this.adoptedPet = pet;
     });
   }
