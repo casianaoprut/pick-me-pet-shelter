@@ -21,6 +21,7 @@ export class PetListComponent implements OnInit, OnDestroy {
   petSubscription = new Subscription();
   userSubscription = new Subscription();
   showAddPet = false;
+  petsLoaded = false;
 
   constructor(
     private petService: PetService,
@@ -29,6 +30,7 @@ export class PetListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.petSubscription = this.petService.pets.subscribe( pets => {
+      this.petsLoaded = true;
       this.completePetList = pets;
       this.filteredPetList = pets;
     });

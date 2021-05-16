@@ -18,6 +18,7 @@ import {GMapModule} from 'primeng/gmap';
 import {SplitterModule} from 'primeng/splitter';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {SkeletonModule} from 'primeng/skeleton';
 
 @NgModule({
   declarations: [],
@@ -42,6 +43,7 @@ import {MessageModule} from 'primeng/message';
     SplitterModule,
     MessagesModule,
     MessageModule,
+    SkeletonModule
   ],
   exports: [
     PasswordModule,
@@ -64,6 +66,7 @@ import {MessageModule} from 'primeng/message';
     SplitterModule,
     MessagesModule,
     MessageModule,
+    SkeletonModule
   ]
 })
 export class PrimengModule { }
