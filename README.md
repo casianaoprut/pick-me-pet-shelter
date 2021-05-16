@@ -16,3 +16,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running tests
 
 Run `ng serve` and `cypress open` to open cypress and run the tests.
+[Cypress dashboard](https://dashboard.cypress.io/projects/7mefvg/runs)
